@@ -1,16 +1,19 @@
 ---
 name: skill-vetter
-version: 1.0.0
-description: Security-first skill vetting for AI agents. Use before installing any skill from ClawdHub, GitHub, or other sources. Checks for red flags, permission scope, and suspicious patterns.
+version: 2.0.0
+user-invocable: true
+description: "Multi-scanner security gate. TRIGGER when: user mentions installing, adding, or reviewing a skill to Claude Code, OpenClaw, or any other AI agent. Detects malicious code, vulnerabilities, and suspicious patterns. Use before installing any skill from ClawdHub, GitHub, or other sources."
 ---
 
 # Skill Vetter 🔒
 
-Security-first vetting protocol for AI agent skills. **Never install a skill without vetting it first.**
+Multi-scanner security gate for AI agent skills. **Never install a skill without vetting it first.**
+
+Ask the user: "Should I run skill-vetter on this before installing?" whenever they mention installing a new skill.
 
 ## When to Use
 
-- Before installing any skill from ClawdHub
+- Before installing **ANY** skill to Claude Code, OpenClaw, or other AI agents — whether from ClawHub, GitHub, or any external source
 - Before running skills from GitHub repos
 - When evaluating skills shared by other agents
 - Anytime you are asked to install unknown code
@@ -104,7 +107,64 @@ NOTES: [Any observations]
 =======================================
 ```
 
-## Quick Vet Commands
+## How to Run (Scripted Scan)
+
+### Check dependencies first
+
+```bash
+bash {baseDir}/scripts/check-deps.sh
+```
+
+Fix any missing dependencies before proceeding.
+
+### Run the full scan
+
+```bash
+bash {baseDir}/scripts/vett.sh "<skill-name-or-path>"
+```
+
+The argument can be:
+- A ClawHub skill name: `youtube-summarize`
+- A GitHub URL: `https://github.com/user/repo`
+- A local path: `/tmp/my-skill/`
+
+### Interpret Results
+
+| Verdict | Meaning | Action |
+|---------|---------|--------|
+| **BLOCKED** | CRITICAL or HIGH findings | Do NOT install. Show findings. |
+| **REVIEW** | Medium severity findings | Show findings, ask user to decide. |
+| **SAFE** | All scanners passed | Proceed with installation. |
+
+### After Verdict
+
+Always show the user:
+1. Which scanners ran
+2. Which passed/failed
+3. Specific findings for anything flagged
+4. Your recommendation
+
+**Never install the skill automatically.** Always confirm with the user after showing results.
+
+## Scanners Used
+
+| Scanner | What It Checks |
+|---------|---------------|
+| aguara | Prompt injection, obfuscation, suspicious LLM calls |
+| skill-analyzer | Known malicious patterns, CVE database |
+| secrets-scan | Hardcoded API keys, tokens, credentials |
+| structure-check | Missing SKILL.md, malformed YAML, dangerous files |
+
+## Dependencies
+
+- `aguara` — Go-based prompt scanner
+- `skill-analyzer` — Cisco AI skill scanner (Python)
+- `python3` — For additional checks
+- `curl`, `jq` — For API calls and JSON parsing
+
+Run `check-deps.sh` to verify all tools are installed.
+
+## Quick Vet Commands (Manual)
 
 For GitHub-hosted skills:
 ```bash
@@ -149,3 +209,17 @@ curl -s "https://raw.githubusercontent.com/OWNER/REPO/main/skills/SKILL_NAME/SKI
 
 **学到的教训：**
 > 安全审查类 skill 的完善度高于预期，四个步骤均已覆盖，满足基本安全审查需求。
+
+## 进化记录 v2.0.0
+
+**进化时间：** 2026-05-24
+**进化来源：** 同步远程仓库 app-incubator-xyz/skill-vetter 更新
+**本次变更：**
+- 升级为多扫描器架构（aguara/skill-analyzer/secrets-scan/structure-check）
+- 新增脚本扫描支持：check-deps.sh、install.sh、vett.sh
+- 新增脚本扫描结果解读（BLOCKED/REVIEW/SAFE 三档裁决）
+- 保留原有手动审查流程（Step 1-4）作为无脚本环境下的备选
+- 更新 description 和 version，新增 user-invocable 标记
+
+**学到的教训：**
+> 安全审查从纯人工走清单升级为脚本+人工双重保障。脚本可自动化检测已知恶意模式，人工审查仍需覆盖脚本无法判断的逻辑风险。

@@ -1,6 +1,27 @@
 ---
 name: skill-evolution-manager
-description: Skills自动进化管理器，根据对话经验迭代和优化Skills，实现持续自我进化
+description: Skill进化管理器(skill-evolution-manager)。当用户需要在对话结束时复盘优化Skills、根据用户反馈迭代改进Skill、总结对话经验沉淀到Skill文档、提取成功解决方案和失败教训、将非结构化反馈转为结构化经验数据(evolution.json)、智能缝合经验到SKILL.md文档、跨版本对齐经验数据(skill-manager更新后)、记录用户偏好和约束条件(preference learning)、诊断Skill表现问题、保存代码规范和最佳实践到Skill、执行经验复盘(review/extract)、增量合并经验数据(merge_evolution)、文档智能缝合(smart_stitch)等相关任务时立即使用。提供merge_evolution.py、smart_stitch.py、align_all.py等核心脚本实现经验持久化和跨版本兼容。
+trigger:
+  - Skill复盘
+  - Skill优化
+  - 经验沉淀
+  - 迭代Skill
+  - 对话复盘
+  - 保存经验
+  - evolution.json
+  - 缝合文档
+  - 经验提取
+  - Skill进化
+  - 跨版本对齐
+  - 用户偏好学习
+  - 诊断Skill
+  - 代码规范保存
+  - merge_evolution
+  - smart_stitch
+  - align_all
+  - 经验持久化
+  - 最佳实践记录
+  - skill-evolution
 ---
 
 # Skill Evolution Manager - 技能进化管理器
@@ -21,6 +42,9 @@ description: Skills自动进化管理器，根据对话经验迭代和优化Skil
 3. ✅ Skill表现出色、效果超预期
 4. 💡 用户提出改进建议或反馈意见
 5. 🔄 主动复盘：「总结一下这次skill哪里可以改进」
+6. `/evolve` 命令
+7. "复盘一下刚才的对话"
+8. "把这个经验保存到 Skill 里"
 
 ## 核心设计理念
 
@@ -130,6 +154,12 @@ description: Skills自动进化管理器，根据对话经验迭代和优化Skil
 5. **更新 stats 统计** → 进化次数+1
 6. **保存文件** → 持久化存储
 
+**脚本方式持久化：**
+```bash
+python {baseDir}/scripts/merge_evolution.py <skill_path> '<json_string>'
+```
+将经验增量写入目标 Skill 的 `evolution.json`。
+
 **自动进化判断标准：**
 
 | 笔记类型 | 是否自动进化 | 处理方式 |
@@ -144,6 +174,12 @@ description: Skills自动进化管理器，根据对话经验迭代和优化Skil
 ### 阶段3：应用进化，更新Skill.md
 
 **核心动作：** 将经验转化为Skill的实际改进。
+
+**脚本方式缝合：**
+```bash
+python {baseDir}/scripts/smart_stitch.py <skill_path>
+```
+将 `evolution.json` 的内容转化为 Markdown 并追加到 `SKILL.md` 末尾。
 
 **进化修改原则：**
 
@@ -273,6 +309,21 @@ description: Skills自动进化管理器，根据对话经验迭代和优化Skil
 
 ## 注意事项
 
+### 跨版本对齐（skill-manager 更新后）
+当 `skill-manager` 更新了某个 Skill 后，应主动运行 `smart_stitch.py`，将之前保存的经验"重新缝合"到新版文档中。
+```bash
+python {baseDir}/scripts/align_all.py
+```
+一键遍历所有 Skill 文件夹，将存在的 `evolution.json` 经验重新缝合回对应的 `SKILL.md`。常用于批量更新后的经验还原。
+
+### 核心脚本
+
+| 脚本 | 用途 |
+|------|------|
+| `scripts/merge_evolution.py` | 增量合并工具。读取旧 JSON，去重合并新 List，保存 |
+| `scripts/smart_stitch.py` | 文档生成工具。读取 JSON，在 `SKILL.md` 末尾生成或更新最佳实践章节 |
+| `scripts/align_all.py` | 全量对齐工具。一键遍历所有 Skill，重新缝合经验回 SKILL.md |
+
 ### ✅ 应该进化的情况
 - 明确的bug和错误
 - 用户反复遇到的困惑点
@@ -292,6 +343,11 @@ description: Skills自动进化管理器，根据对话经验迭代和优化Skil
 - 破坏原有核心功能的改动
 
 ---
+
+## 最佳实践
+
+- **不要直接修改 SKILL.md 的正文**：除非是明显的拼写错误。所有的经验修正应通过 `evolution.json` 通道进行，这样可以保证在 Skill 升级时经验不丢失
+- **多 Skill 协同**：如果一次对话涉及多个 Skill，请依次为每个 Skill 执行上述流程
 
 ## 设计哲学
 
@@ -319,3 +375,19 @@ description: Skills自动进化管理器，根据对话经验迭代和优化Skil
 
 **学到的教训：**
 > 进化管理器自身也需要进化——从纯文档进化为可执行系统，才能驱动其他 skill 真正进化。
+
+## 进化记录 v1.1.0
+
+**进化时间：** 2026-05-24
+**进化来源：** 同步远程仓库 galaxygx1983/skill-evolution-manager 更新
+**本次变更：**
+- 下载远程脚本：merge_evolution.py、smart_stitch.py、align_all.py
+- 更新 description，扩展触发词（/evolve、跨版本对齐、用户偏好学习等）
+- 新增脚本命令到阶段2（merge_evolution.py）和阶段3（smart_stitch.py）
+- 新增跨版本对齐章节（align_all.py）
+- 新增核心脚本说明表
+- 新增最佳实践（不直接修改SKILL.md正文、多Skill协同）
+- 保留本地原有进化记录和中文方法论
+
+**学到的教训：**
+> 进化管理器从纯文档升级为脚本+文档双驱动。脚本保证经验持久化不丢失，文档保证方法论可理解。跨版本对齐是批量更新后的关键步骤——否则经验会随版本更新而丢失。
