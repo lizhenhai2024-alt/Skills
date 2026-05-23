@@ -1,0 +1,59 @@
+{
+  "skill_name": "intern-job-advisor",
+  "version": "1.0.1",
+  "last_evolved": "2026-05-23T23:59:00+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-05-23T23:55:00+08:00",
+      "type": "feature",
+      "description": "创建通用版大厂实习求职顾问 — 支持任意专业任意行业方向的岗位评估框架",
+      "conversation_hint": "用户要求创建通用intern-job-advisor",
+      "changes": [
+        "创建通用版intern-job-advisor SKILL.md",
+        "用户画像对话构建模块（替代硬编码）",
+        "六步分析框架通用化改造",
+        "通用关键词系统（跨行业高价值+低价值）",
+        "动态薪酬评估（实时搜索替代预设表）",
+        "联网搜索策略动态化",
+        "创建 evolution.json"
+      ]
+    }
+  ],
+  "lessons_learned": [
+    {
+      "id": "L001",
+      "scenario": "从intern-job-advisor-daughter拆分出通用版时",
+      "problem": "原版intern-job-advisor高度定制化（英语专业+出海方向），其他专业/行业无法复用",
+      "solution": "拆分为通用版（intern-job-advisor）+ 女儿定制版（intern-job-advisor-daughter），通用版用对话构建画像+动态搜索薪酬，定制版保持预设公司库和薪资基准。",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.0.0"
+    }
+  ],
+  "pending_improvements": [
+    {
+      "idea": "增加offer对比功能（给offer信息后自动输出对比表）",
+      "priority": "medium",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "支持批量评估（用户一次贴多个JD）",
+      "priority": "medium",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "简历-岗位匹配度分析（用户上传简历后扫描关键词匹配度）",
+      "priority": "low",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    }
+  ],
+  "stats": {
+    "total_evolutions": 2,
+    "bugs_fixed": 0,
+    "features_added": 2,
+    "optimizations": 0,
+    "lessons_recorded": 1
+  }
+}

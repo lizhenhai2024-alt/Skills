@@ -1,0 +1,95 @@
+{
+  "skill_name": "patent-disclosure-writer",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "structure-design-innovation",
+      "prompt": "我想编写一个关于双棒式减振器改进结构的专利交底书。主要创新点是：(1)优化了活塞杆与缸筒的间隙设计，降低了内泄漏；(2)重新设计了补偿室的容积和连接孔口，改善了阻尼特性的一致性。这项改进可以将产品的寿命延长约20%，并能提升舒适性指标2-3dB。应用场景是中高端乘用车和电动车。请帮我快速生成一份10-15页的Word交底书。",
+      "expected_output": "生成一份格式规范、结构完整的Word文档交底书，包括：1.技术背景，2.现有技术分析，3.发明内容（含详细的结构改进说明），4.性能优势，5.实施例，6.预期效果。文档应该约10-15页，内容清晰专业。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "document_structure_completeness",
+          "description": "生成的Word文档是否包含所有6个标准章节（背景、现有技术、发明内容、优势、实施例、前景）"
+        },
+        {
+          "name": "page_count_appropriateness",
+          "description": "文档页数是否在10-15页之间（考虑表格和图表）"
+        },
+        {
+          "name": "technical_detail_depth",
+          "description": "发明内容章节中是否包含了用户提供的具体创新点（活塞杆间隙、补偿室容积等）"
+        },
+        {
+          "name": "performance_data_integration",
+          "description": "性能优势章节是否合理整合了用户提供的定量数据（寿命提升20%、舒适性提升2-3dB）"
+        },
+        {
+          "name": "professional_tone",
+          "description": "文档的整体语言和表述是否专业、规范、符合专利申报文件的风格"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "cdc-valve-system-design",
+      "prompt": "我想为一项新的CDC电磁阀设计编写专利交底书。创新点包括：(1)采用了新的电磁线圈缠绕工艺，使响应时间从25ms降低到15ms；(2)设计了三腔阀结构，可以更精细地控制阻尼力；(3)加入了温度补偿电路，在-10℃到+80℃的工作范围内性能保持一致。这项技术已在样品上验证，试验数据显示与竞品相比，响应特性改善了40%，而成本只增加了8%。请生成专利交底书，并调用CDC减振器专家系统获得更专业的技术支持。",
+      "expected_output": "生成一份Word交底书，内容应充分体现CDC电控系统的专业性。通过集成CDC专家系统，文档中应包含更精准的电磁阀工作原理描述、PQ/FV特性曲线的分析思路、响应时间改善的技术手段等。整体应体现电控减振领域的专业深度。",
+      "files": [],
+      "assertions": [
+        {
+          "name": "cdc_expert_integration_quality",
+          "description": "文档中是否合理应用了CDC专家系统的知识，如电磁驱动原理、阀芯设计、响应特性等专业术语"
+        },
+        {
+          "name": "technical_accuracy",
+          "description": "发明内容部分是否准确描述了用户提供的三项创新：电磁线圈工艺、三腔阀结构、温度补偿"
+        },
+        {
+          "name": "quantitative_data_presentation",
+          "description": "性能指标部分是否清晰呈现了响应时间、响应特性改善幅度、成本增幅等数据"
+        },
+        {
+          "name": "professional_depth",
+          "description": "是否体现了CDC领域的专业深度，如电磁响应特性、阻尼控制精度、温度特性等方面的论述"
+        },
+        {
+          "name": "application_relevance",
+          "description": "实施例或应用前景部分是否相关且针对电控减振的市场需求进行了论述"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "nvh-foam-elimination",
+      "prompt": "我有一项NVH改进技术想申报专利。我上传了我的试验报告和设计图纸。简单来说，我通过改进油液配方和阻尼阀的设计，成功降低了减振器的泡沫化现象，从而显著降低了异响和噪音。试验数据表明，相比原方案，新设计在各温度和频率条件下都能将泡沫化指数降低50%以上，从而减少异响次数从10次/分钟降到2次/分钟。我想快速生成一份交底书，并自动调用专利研究工具来对标竞品的相关专利。",
+      "expected_output": "系统应能：1)自动从上传的试验报告中提取关键数据（温度、频率条件、泡沫化指数、异响次数等），2)从设计图纸中识别技术改进点（油液配方、阀门结构等），3)调用专利研究工具查找竞品的NVH相关专利，4)生成一份包含详细对标分析的Word交底书，体现该技术相比竞品的创新性和优势。",
+      "files": [
+        "sample_test_report_nvh.pdf",
+        "damper_design_drawing.pdf"
+      ],
+      "assertions": [
+        {
+          "name": "file_extraction_accuracy",
+          "description": "系统是否准确从上传的文件中提取出关键技术参数、试验数据（泡沫化指数、异响次数等）"
+        },
+        {
+          "name": "patent_research_integration",
+          "description": "是否成功调用了专利研究工具，在交底书中呈现了竞品专利的对标分析"
+        },
+        {
+          "name": "problem_solution_clarity",
+          "description": "泡沫化问题和解决方案（油液配方 + 阀门设计）是否在交底书中清晰地表述"
+        },
+        {
+          "name": "quantitative_advantage_presentation",
+          "description": "是否清晰呈现了定量优势（泡沫化指数↓50%、异响次数↓80%）"
+        },
+        {
+          "name": "document_coherence",
+          "description": "文档整体是否逻辑清晰、内容连贯，各章节之间的过渡是否自然"
+        }
+      ]
+    }
+  ]
+}
