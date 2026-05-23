@@ -1,7 +1,7 @@
 {
   "skill_name": "career-advisor",
-  "version": "1.0.0",
-  "last_evolved": "2026-05-23T23:50:00+08:00",
+  "version": "1.2.0",
+  "last_evolved": "2026-05-24T01:00:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T23:50:00+08:00",
@@ -16,6 +16,31 @@
         "动态薪酬评估（实时搜索替代预设表）",
         "联网搜索策略动态化",
         "创建 evolution.json"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T18:30:00+08:00",
+      "type": "feature",
+      "description": "搜索策略全面升级 + 关系描述修正 — 引入A/B公司分类、官网直达策略、校招季节感知",
+      "conversation_hint": "用户要求求职skill通用更新，与其他求职skill同步",
+      "changes": [
+        "新增A/B公司分类机制（A类自有官网为主 vs B类聚合平台可达）",
+        "新增CDP官网直达策略及通用大厂招聘域名参考表",
+        "新增校招季节感知模块",
+        "新增搜索频率控制规则",
+        "重写与intern-job-advisor/intern-job-advisor-daughter的关系描述（三个求职skill分工）",
+        "更新 evolution.json v1.1.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T01:00:00+08:00",
+      "type": "optimization",
+      "description": "新增输出自检体系 — 四层检查清单，确保评估质量一致",
+      "conversation_hint": "用户建议Skill应内置自检机制，同步至三个求职skill",
+      "changes": [
+        "新增「输出自检」章节（位于边界情况之后、关系说明之前）",
+        "自检四层：硬性规则扫描→评估一致性检查→内容质量检查→输出完整性检查",
+        "更新 evolution.json v1.2.0"
       ]
     }
   ],
@@ -50,10 +75,10 @@
     }
   ],
   "stats": {
-    "total_evolutions": 1,
+    "total_evolutions": 3,
     "bugs_fixed": 0,
-    "features_added": 1,
-    "optimizations": 0,
+    "features_added": 2,
+    "optimizations": 1,
     "lessons_recorded": 1
   }
 }
