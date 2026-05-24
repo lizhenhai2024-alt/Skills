@@ -199,6 +199,17 @@ curl -s "https://raw.githubusercontent.com/OWNER/REPO/main/skills/SKILL_NAME/SKI
 
 ---
 
+## 自检清单
+
+- [ ] 已读取待审查skill的全部文件（不只看SKILL.md）
+- [ ] 4步审查协议（Source Check → Code Review → Permission Scope → Risk Classification）已逐条执行
+- [ ] 重点检查了RED FLAGS列表中的各项（curl到未知地址、读取凭证文件、eval/exec等）
+- [ ] 风险等级判断与审查结果一致
+- [ ] 安装前已向用户展示了审查报告并获得了确认
+- [ ] 未自动安装任何未经用户确认的skill
+
+---
+
 ## 进化记录 v1.0.0
 
 **进化时间：** 2026-05-23

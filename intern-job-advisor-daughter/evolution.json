@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor-daughter",
-  "version": "3.0.0",
-  "last_evolved": "2026-05-24T19:30:00+08:00",
+  "version": "3.1.0",
+  "last_evolved": "2026-05-24T20:00:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -441,13 +441,27 @@
         "统一'通道A优先'为'双通道并行'表述",
         "边界情况从5条扩展描述压缩为5条单行"
       ]
+    },
+    {
+      "timestamp": "2026-05-24T20:00:00+08:00",
+      "type": "optimization",
+      "description": "v3.1.0 搜索策略重构 — 从双通道改为三阶段，WebSearch快速扫描升格为第一阶段",
+      "conversation_hint": "用户指出检索分类效率没有昨天快，分析原因：实习僧子Agent每个做5组关键词太重。改用WebSearch并行快速扫描→确认有岗→CDP精准获取JD",
+      "changes": [
+        "搜索策略从双通道(实习僧+官网)改为三阶段(WebSearch扫描→实习僧JD→官网补漏)",
+        "WebSearch从'仅补充信息'升格为第一阶段快速扫描工具",
+        "新增实践验证数据：10家公司2分钟并行WebSearch完成扫描",
+        "Gotchas新增搜索陷阱#1：WebSearch扫描比CDP快50倍",
+        "实习僧CDP降为第二阶段：仅对确认有岗的公司精准获取JD",
+        "公司官网降为第三阶段：仅对实习僧未收录的岗位补漏"
+      ]
     }
   ],
   "stats": {
-    "total_evolutions": 18,
+    "total_evolutions": 19,
     "bugs_fixed": 6,
     "features_added": 7,
-    "optimizations": 5,
+    "optimizations": 6,
     "lessons_recorded": 18
   }
 }

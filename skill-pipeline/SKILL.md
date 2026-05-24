@@ -55,25 +55,13 @@ For bundles, after cloning, scan subdirectories for SKILL.md files.
 
 ### Parsing Rules
 
-1. Extract each line containing a URL or skill name
-2. Normalize to: `{ name, source, source_type }`
-3. For GitHub URLs: `source_type = "github"`, extract repo name as `name`
-4. For local paths: `source_type = "local"`, use directory name as `name`
-5. For archive URLs: `source_type = "url"`, use filename (without extension) as `name`
-6. Skip lines that are comments (`#`) or already checked (`[x]`)
+Each line → `{ name, source, source_type }`: GitHub URLs → `github`, local paths → `local`, archive URLs → `url`. Skip comments (`#`) and already-checked items (`[x]`).
 
 ---
 
 ## Phase 2: DETECT — Check Installed Skills
 
-Before fetching, check which skills are already installed.
-
-```powershell
-# List all installed skill directories
-Get-ChildItem "$env:USERPROFILE\.claude\skills" -Directory | Select-Object -ExpandProperty Name
-```
-
-For each skill in the parsed list:
+Before fetching, check which skills are already installed:
 - If a directory with that name exists in `~/.claude/skills/` → mark as **SKIPPED**
 - Otherwise → proceed to vetting
 
@@ -99,20 +87,7 @@ powershell -File "{baseDir}/scripts/detect-proxy.ps1" --enable
 
 ### Fetching Skills to Staging
 
-Create a staging directory:
-
-```powershell
-$stagingBase = Join-Path $env:TEMP "skill-pipeline-staging-$(Get-Date -Format 'yyyyMMdd-HHmmss')"
-New-Item -ItemType Directory -Path $stagingBase -Force
-```
-
-For each skill, fetch to staging using the fetch script:
-
-```powershell
-powershell -File "{baseDir}/scripts/fetch-skill.ps1" -Source "{source_url}" -Destination "$stagingBase/{skill-name}"
-```
-
-The fetch script handles the full network recovery cascade (direct → proxy → mirror).
+Create staging at `$env:TEMP\skill-pipeline-{timestamp}\`, then use `scripts/fetch-skill.ps1` to clone with full network recovery cascade.
 
 ### Parallel Vetting with Subagents
 
@@ -150,13 +125,7 @@ Skills with verdict DO_NOT_INSTALL are **blocked** — they remain in staging (n
 
 ### Install Command
 
-```powershell
-# Robocopy for large skills (handles Chinese paths)
-robocopy "$stagingBase\{skill-name}" "$env:USERPROFILE\.claude\skills\{skill-name}" /E /MOVE /R:1 /W:1 /NFL /NDL /NP /XD .git
-
-# Validate after install
-powershell -File "{baseDir}/scripts/validate-structure.ps1" -Path "$env:USERPROFILE\.claude\skills\{skill-name}"
-```
+`robocopy "$stagingBase\{skill-name}" "$env:USERPROFILE\.claude\skills\{skill-name}" /E /MOVE /R:1 /W:1 /NFL /NDL /NP /XD .git` → then validate with `scripts/validate-structure.ps1`.
 
 ---
 
@@ -166,44 +135,7 @@ Collect all results from vetting and installation, then generate a report.
 
 ### Build Results JSON
 
-Compile a JSON array with one entry per skill:
-
-```json
-[
-  {
-    "name": "web-access",
-    "status": "SKIPPED",
-    "path": "C:\\Users\\lizhe\\.claude\\skills\\web-access",
-    "source_type": "github",
-    "risk_level": "-",
-    "issues": ["Already installed"]
-  },
-  {
-    "name": "new-skill",
-    "status": "INSTALLED",
-    "path": "C:\\Users\\lizhe\\.claude\\skills\\new-skill",
-    "source_type": "github",
-    "risk_level": "LOW",
-    "issues": []
-  },
-  {
-    "name": "risky-skill",
-    "status": "BLOCKED",
-    "path": "-",
-    "source_type": "github",
-    "risk_level": "HIGH",
-    "issues": ["Sends data to external servers", "Requests credentials"]
-  },
-  {
-    "name": "failed-skill",
-    "status": "FAILED",
-    "path": "-",
-    "source_type": "github",
-    "risk_level": "-",
-    "issues": ["Network timeout after 3 retries"]
-  }
-]
-```
+Compile results with one entry per skill: name, status (SKIPPED/INSTALLED/BLOCKED/FAILED), path, source_type, risk_level, issues.
 
 ### Generate Report
 
@@ -212,39 +144,20 @@ $resultsJson | Out-File "$env:TEMP\pipeline-results.json" -Encoding utf8
 powershell -File "{baseDir}/scripts/generate-report.ps1" -ResultsFile "$env:TEMP\pipeline-results.json"
 ```
 
-Output format:
-
-```markdown
-## Skill Pipeline Report
-
-| Skill | Status | Path | Source | Risk | Issues |
-|-------|--------|------|--------|------|--------|
-| web-access | ⏭️ SKIPPED | ~/.claude/skills/web-access | github | - | Already installed |
-| new-skill | ✅ INSTALLED | ~/.claude/skills/new-skill | github | LOW | - |
-| risky-skill | 🚫 BLOCKED | - | github | HIGH | Sends data to external servers |
-| failed-skill | ❌ FAILED | - | github | - | Network timeout after 3 retries |
-
-**Summary**: 4 skills processed — 1 skipped, 1 installed, 1 blocked, 1 failed
-```
+Output format: a Markdown table with columns Skill, Status (✅/⏭️/🚫/❌), Path, Source, Risk, Issues.
 
 ---
 
 ## Network Recovery Strategy
 
-When fetching skills from GitHub, follow this cascade:
+Cascade: `Direct → Proxy → GitHub Mirror → Alternative Mirror → FAILED`
 
-```
-Direct → With Proxy → GitHub Mirror → Alternative Mirror → FAILED
-```
+- Proxy detection: registry + env + config.env
+- Mirrors: ghproxy.com, gitclone.com; npm: npmmirror.com
+- Backoff: 2s → 4s → 8s, max 3 retries
+- **Never retry the same command after failure** — always change strategy
 
-See `references/network-recovery.md` for full details including:
-- Proxy detection (Windows registry + environment + config.env)
-- Git proxy flags (`-c http.proxy=...`)
-- GitHub mirrors (ghproxy.com, gitclone.com)
-- npm mirrors (npmmirror.com)
-- Retry with exponential backoff (2s → 4s → 8s)
-
-**Key rule:** Never retry the same command after failure. Always change strategy (add proxy, switch mirror).
+Full details in `references/network-recovery.md`.
 
 ---
 
@@ -293,21 +206,13 @@ After completing the pipeline, verify:
 
 ---
 
-## Quick Start Example
+## Quick Start
 
 ```
-User: "Install all skills from my checklist at F:\PIMS\00_Index\skill-checklist.md"
-
-Pipeline execution:
-1. PARSE: Read checklist, extract 10 skill URLs
-2. DETECT: 7 already installed → SKIPPED, 3 need processing
-3. VET: Spawn 3 parallel vetter subagents
-   - skill-a: SAFE_TO_INSTALL
-   - skill-b: INSTALL_WITH_CAUTION (reads ~/.config)
-   - skill-c: DO_NOT_INSTALL (sends data externally)
-4. INSTALL: Spawn 2 parallel installer subagents
-   - skill-a: INSTALLED ✅
-   - skill-b: INSTALLED_WITH_CAUTION ⚠️
-   - skill-c: BLOCKED 🚫
-5. REPORT: Show consolidated table
+User: "Install all skills from my checklist"
+1. PARSE: Read checklist → extract URLs
+2. DETECT: Check installed → skip duplicates
+3. VET: Parallel security review (max 5 concurrent)
+4. INSTALL: Copy vetted skills, inject metadata, validate
+5. REPORT: Consolidated table with status per skill
 ```
