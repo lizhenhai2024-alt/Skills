@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor-daughter",
-  "version": "3.2.0",
-  "last_evolved": "2026-05-24T23:30:00+08:00",
+  "version": "3.2.1",
+  "last_evolved": "2026-05-25T00:30:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -288,6 +288,22 @@
         "SKILL.md新增Gotchas #7：PowerShell处理安克API中文编码坑",
         "进化记录和lesson同步更新"
       ]
+    },
+  {
+      "timestamp": "2026-05-25T00:30:00+08:00",
+      "type": "optimization",
+      "description": "v3.2.1 报告增强 — 剔除非英语岗位+全岗位附投递链接+输出自检优化",
+      "conversation_hint": "用户要求剔除非英语岗位+给报告加网址链接+更新进化",
+      "changes": [
+        "R3报告移除6个非英语岗位（西葡语/日语/小语种/无英语硬门槛），净保留29个英语硬门槛岗",
+        "搜索摘要表新增「投递链接」列，每个岗位附招聘官网URL",
+        "详细评估每个岗位标题下新增投递入口行（URL+搜索关键词指引）",
+        "快速评估表新增投递链接列",
+        "推荐投递优先级表新增链接列，[投递]可点击跳转",
+        "多岗位投递策略各公司新增「投递入口」行",
+        "更新岗位有效性（小米/字节ByteIntern转向27届，新增韶音GTM培训生）",
+        "SKILL.md版本更新至v3.2.1"
+      ]
     }
   ],
   "lessons_learned": [
@@ -450,6 +466,14 @@
       "solution": "用 $response | ConvertTo-Json -Depth 5 | Out-File 保存原始JSON后直接读取，或使用 Python json.load() 解码。address/jobFunction 等嵌套JSON字段需二次 ConvertFrom-Json 解析",
       "first_occurred": "2026-05-24",
       "fixed_in_version": "3.2.0"
+    },
+    {
+      "id": "L020",
+      "scenario": "生成实习岗位评估报告时",
+      "problem": "报告包含日语/西葡语/小语种等非英语岗位，用户需要快速投递但需手动搜索每个岗位的招聘链接",
+      "solution": "R3报告增加两个改进：1)剔除非英语岗位（日语/西葡语/小语种/无英语硬门槛），仅保留英语硬门槛岗位，用户投递方向更聚焦；2)所有岗位附招聘官网链接+搜索关键词指引，搜索摘要表、详细评估、快速评估、优先级表、策略表五处同步添加，用户可一键跳转投递",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "3.2.1"
     }
   ],
   "pending_improvements": [
@@ -485,10 +509,10 @@
     }
   ],
   "stats": {
-    "total_evolutions": 23,
+    "total_evolutions": 24,
     "bugs_fixed": 7,
     "features_added": 7,
-    "optimizations": 9,
-    "lessons_recorded": 19
+    "optimizations": 10,
+    "lessons_recorded": 20
   }
 }
