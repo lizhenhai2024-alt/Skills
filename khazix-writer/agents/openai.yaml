@@ -1,0 +1,4 @@
+interface:
+  display_name: "Khazix Writer"
+  short_description: "微信公众号长文写作：数字生命卡兹克风格"
+  default_prompt: "Use $khazix-writer to write long-form WeChat public account articles in Khazix's signature voice."

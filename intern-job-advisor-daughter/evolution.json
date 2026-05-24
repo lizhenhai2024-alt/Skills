@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor-daughter",
-  "version": "3.2.1",
-  "last_evolved": "2026-05-25T00:30:00+08:00",
+  "version": "2.1.0",
+  "last_evolved": "2026-05-24T16:12:44+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -207,103 +207,6 @@
         "创建web-access站点经验文件references/site-patterns/anker-in.com.md",
         "修复daughter SKILL.md中六步→七步残留不一致"
       ]
-    },
-    {
-      "timestamp": "2026-05-24T17:30:00+08:00",
-      "type": "optimization",
-      "description": "搜索策略从CDP单通道改为实习僧+公司官网双通道并行",
-      "conversation_hint": "测试发现CDP直达公司官网部分失败（30%），对比5/23实习僧成功经验优化",
-      "changes": [
-        "搜索策略从CDP单通道改为实习僧+公司官网双通道并行",
-        "核心原则重写：通道A（实习僧扫海）优先，通道B（公司官网）补漏",
-        "新增实习僧6组关键词搜索策略",
-        "公司官网表增加可靠性列（高/中/低），基于5/24实测标注",
-        "新增通道B失败降级策略表（5种失败模式+对应方案）",
-        "质量检查清单更新为双通道版本",
-        "搜索结果处理增加去重合并（实习僧+官网双来源）"
-      ]
-    },
-    {
-      "timestamp": "2026-05-24T18:00:00+08:00",
-      "type": "bugfix",
-      "description": "实测验证通道A关键词组，发现跨境电商关键词在实习僧仅返回小公司，调整关键词优先级",
-      "conversation_hint": "测试通道A发现跨境电商搜索返回小公司，改用海外运营关键词后找到得物/快手/网易等目标公司",
-      "changes": [
-        "实习僧关键词组重排：海外运营/海外市场两组效果最佳，跨境电商组移除",
-        "新增目标公司直接搜组，用于关键词搜索后的公司名补漏",
-        "新增实测效果列，记录每组关键词的实际表现",
-        "新增icon字体数字问题说明（CDP/Jina均无法正确提取）",
-        "新增重要提示：目标公司用海外运营而非跨境电商关键词"
-      ]
-    },
-    {
-      "timestamp": "2026-05-24T19:30:00+08:00",
-      "type": "optimization",
-      "description": "v3.0.0 全面重构 — 从过程手册转为原则驱动+gotchas结构化，对照GitHub trending最佳实践",
-      "conversation_hint": "用户要求优化skill，感觉检索效率和排版不如昨天版本，要求参考GitHub trending skill重新评估",
-      "changes": [
-        "SKILL.md 从660行精简至~240行（-64%）",
-        "移除6条内嵌进化记录 → evolution.json唯一记录源",
-        "描述从4句200字精简为1句含正负触发条件",
-        "搜索策略从详尽操作手册转为三阶段原则+5条gotchas",
-        "输出格式从40行模板精简为15行紧凑参考",
-        "新增 Gotchas 章节：10条真实失败经验结构化记录"
-      ]
-    },
-    {
-      "timestamp": "2026-05-24T20:00:00+08:00",
-      "type": "optimization",
-      "description": "v3.1.0 搜索策略重构 — 从双通道改为三阶段，WebSearch快速扫描升格为第一阶段",
-      "conversation_hint": "用户指出检索分类效率没有昨天快，改用WebSearch并行快速扫描→确认有岗→CDP精准获取JD",
-      "changes": [
-        "搜索策略从双通道(实习僧+官网)改为三阶段(WebSearch扫描→实习僧JD→官网补漏)",
-        "WebSearch从'仅补充信息'升格为第一阶段快速扫描工具",
-        "新增实践验证：10家公司2分钟并行WebSearch完成扫描",
-        "Gotchas新增搜索陷阱#1：WebSearch扫描比CDP快50倍"
-      ]
-    },
-    {
-      "timestamp": "2026-05-24T22:00:00+08:00",
-      "type": "optimization",
-      "description": "v3.1.1 公司清单扩展 — 小红书/榜单推荐出海公司补充到profile.md",
-      "conversation_hint": "用户要求检索小红书推荐出海公司，扩大出海公司范围补充到skill",
-      "changes": [
-        "profile.md新增4家公司：九号公司(Segway-Ninebot)、创想三维(Creality)、乐歌股份(Loctek)、赛维时代(Sailvan Times)",
-        "大疆创新标注BrandOS #1排名(521.4分)强化定位",
-        "SKILL.md新增Gotchas #11：公司清单不能只靠记忆维护，每季度用榜单交叉验证",
-        "版本号更新至v3.1.1"
-      ]
-    },
-    {
-      "timestamp": "2026-05-24T23:30:00+08:00",
-      "type": "bugfix",
-      "description": "v3.2.0 安克API字段提取修复 — PowerShell编码问题诊断+新增3个安克岗位+报告校正",
-      "conversation_hint": "用户反馈安克岗位名称不符且检索到的岗位偏少",
-      "changes": [
-        "修复PowerShell提取安克API中文字段空白问题——Latin-1→UTF-8编码丢失，改用ConvertTo-Json保存原始JSON后读取",
-        "通过API `title` 字段校正报告4个岗位名称（欧洲GTM/品牌经理/电商实习生/推广运营）",
-        "新增3个API发现的岗位：ANZ DTC(8/10)、ANZ KAM/零售(7/10)、ANZ GTM分离独立",
-        "报告搜索摘要从32扩至35岗，推荐/保底表同步更新",
-        "applications.md新增ANZ DTC和ANZ KAM/零售两条投递记录",
-        "SKILL.md新增Gotchas #7：PowerShell处理安克API中文编码坑",
-        "进化记录和lesson同步更新"
-      ]
-    },
-  {
-      "timestamp": "2026-05-25T00:30:00+08:00",
-      "type": "optimization",
-      "description": "v3.2.1 报告增强 — 剔除非英语岗位+全岗位附投递链接+输出自检优化",
-      "conversation_hint": "用户要求剔除非英语岗位+给报告加网址链接+更新进化",
-      "changes": [
-        "R3报告移除6个非英语岗位（西葡语/日语/小语种/无英语硬门槛），净保留29个英语硬门槛岗",
-        "搜索摘要表新增「投递链接」列，每个岗位附招聘官网URL",
-        "详细评估每个岗位标题下新增投递入口行（URL+搜索关键词指引）",
-        "快速评估表新增投递链接列",
-        "推荐投递优先级表新增链接列，[投递]可点击跳转",
-        "多岗位投递策略各公司新增「投递入口」行",
-        "更新岗位有效性（小米/字节ByteIntern转向27届，新增韶音GTM培训生）",
-        "SKILL.md版本更新至v3.2.1"
-      ]
     }
   ],
   "lessons_learned": [
@@ -442,38 +345,6 @@
       "solution": "当SPA页面显示0岗位时，应立即执行逆向：1)提取页面JS资源中的API URL；2)下载主JS文件搜索getJobPosts等接口；3)直接调用API。同时创建站点经验文件记录已知API和参数，避免重复逆向。通用化为SPA零岗位逆向规则，写入所有求职skill。",
       "first_occurred": "2026-05-24",
       "fixed_in_version": "2.1.0"
-    },
-    {
-      "id": "L017",
-      "scenario": "用CDP逐家访问公司招聘官网搜索岗位时",
-      "problem": "约30%目标公司官网无法正常访问（联想校招窗口关闭、vivo需登录、大疆无适配岗等），每家公司单独CDP浏览耗时且不可靠。而5/23只用实习僧就找到了12个高质量岗位",
-      "solution": "搜索策略改为双通道：通道A（实习僧CDP扫海）优先，6组关键词一次搜索覆盖80%目标公司；通道B（公司官网）仅补漏实习僧未覆盖的公司。公司官网表增加可靠性标注，新增5种失败模式的降级策略",
-      "first_occurred": "2026-05-24",
-      "fixed_in_version": "2.2.0"
-    },
-    {
-      "id": "L018",
-      "scenario": "在实习僧用关键词搜索岗位时",
-      "problem": "\"跨境电商 实习\"搜索返回的全是小公司（光年跨境/鸣灿电商等），目标公司（得物/快手/网易/影石）完全不出现。原因是目标公司的出海岗位在实习僧上标注的关键词是\"海外运营\"\"海外市场\"而非\"跨境电商\"",
-      "solution": "关键词即筛选器。在聚合平台上不同关键词决定返回的公司层级。实习生搜索调整为：优先\"海外运营\"\"海外市场\"两组（得物/快手/网易/哈啰等），其次\"海外KOL/红人营销\"\"品牌出海\"，最后用目标公司名搜索补漏。移除\"跨境电商\"组（仅返回小公司）",
-      "first_occurred": "2026-05-24",
-      "fixed_in_version": "2.2.1"
-    },
-    {
-      "id": "L019",
-      "scenario": "用PowerShell提取安克API返回的中文字段时",
-      "problem": "Invoke-RestMethod 获取安克API数据后，$_.title 等字段在 PowerShell 5.1 管道输出中全部为空白——实际数据已返回，但 Latin-1→UTF-8 编码转换在管道中丢失，导致误判为API返回空字段",
-      "solution": "用 $response | ConvertTo-Json -Depth 5 | Out-File 保存原始JSON后直接读取，或使用 Python json.load() 解码。address/jobFunction 等嵌套JSON字段需二次 ConvertFrom-Json 解析",
-      "first_occurred": "2026-05-24",
-      "fixed_in_version": "3.2.0"
-    },
-    {
-      "id": "L020",
-      "scenario": "生成实习岗位评估报告时",
-      "problem": "报告包含日语/西葡语/小语种等非英语岗位，用户需要快速投递但需手动搜索每个岗位的招聘链接",
-      "solution": "R3报告增加两个改进：1)剔除非英语岗位（日语/西葡语/小语种/无英语硬门槛），仅保留英语硬门槛岗位，用户投递方向更聚焦；2)所有岗位附招聘官网链接+搜索关键词指引，搜索摘要表、详细评估、快速评估、优先级表、策略表五处同步添加，用户可一键跳转投递",
-      "first_occurred": "2026-05-24",
-      "fixed_in_version": "3.2.1"
     }
   ],
   "pending_improvements": [
@@ -509,10 +380,10 @@
     }
   ],
   "stats": {
-    "total_evolutions": 24,
-    "bugs_fixed": 7,
+    "total_evolutions": 15,
+    "bugs_fixed": 5,
     "features_added": 7,
-    "optimizations": 10,
-    "lessons_recorded": 20
+    "optimizations": 3,
+    "lessons_recorded": 16
   }
 }

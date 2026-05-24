@@ -1,0 +1,44 @@
+{
+  "skill_name": "cdc-damper-expert",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "low-current-dead-zone-diagnosis",
+      "prompt": "我们的一款CDC减振器在0.3~0.5A电流范围内FV曲线无变化，表现为低电流死区。先导孔直径为2.2mm，电磁阀弹簧预紧力为15N。请分析根因并给出改进方案。",
+      "expected_output": "应识别出先导孔φ2.2mm > 2.0mm阈值是高概率死区原因，分析电磁力不足与液压阻力过大的矛盾，给出减小先导孔至φ1.0~1.5mm或引入环形缝隙的改进建议，并输出流量路径→PQ→FV→控制链完整分析。",
+      "files": [],
+      "assertions": [
+        {"name": "root_cause_identification", "description": "正确识别先导孔过大(>2.0mm)为根因"},
+        {"name": "flow_path_analysis", "description": "输出完整的流量路径分析"},
+        {"name": "pq_fv_derivation", "description": "从PQ推导FV曲线，解释死区段的物理机制"},
+        {"name": "improvement_quantified", "description": "改进方案包含具体尺寸范围(φ1.0~1.5mm)"},
+        {"name": "risk_assessment", "description": "说明改进方案的潜在风险(如加工难度)"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "high-current-saturation-analysis",
+      "prompt": "CDC减振器在电流>1.2A后阻尼力不再增加，需要更大的硬模式阻尼力。测试显示电流增大但流量不变，压降曲线已趋于平坦。请分析并给出优化方案。",
+      "expected_output": "应诊断为高电流饱和（流道已全开），分析主流道瓶颈位置，给出扩大主流道面积/优化回流路径/减少串联节流级数的方案，并附带DFMEA失效模式更新。",
+      "files": [],
+      "assertions": [
+        {"name": "saturation_diagnosis", "description": "准确诊断为高电流饱和"},
+        {"name": "flow_bottleneck_identified", "description": "识别流道瓶颈位置"},
+        {"name": "improvement_direction", "description": "给出具体的流道扩大或路径优化方向"},
+        {"name": "dfmea_linkage", "description": "关联DFMEA饱和失效模式"}
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "cdc-benchmark-output",
+      "prompt": "请做一份CDC外置电磁阀 vs 内置电磁阀的对标分析，对比维度包括响应时间、控制精度、NVH表现、量产成本和典型应用车型。",
+      "expected_output": "应按模板D输出对标表格，包含架构形式、先导阀类型、控制电流范围、FV曲线分段特性、NVH表现、典型应用车型等维度，并给出推荐结论和理由。",
+      "files": [],
+      "assertions": [
+        {"name": "table_completeness", "description": "对标表格覆盖所有要求维度"},
+        {"name": "architecture_comparison", "description": "清晰对比外置/内置电磁阀架构差异"},
+        {"name": "recommendation_with_reasoning", "description": "推荐方案附带工程理由"}
+      ]
+    }
+  ]
+}

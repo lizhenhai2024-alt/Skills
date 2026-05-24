@@ -1,0 +1,4 @@
+interface:
+  display_name: "HV Analysis"
+  short_description: "纵深研究：时间线历史+横向竞品对比，输出PDF研究报告"
+  default_prompt: "Use $hv-analysis to perform deep research on products, companies, concepts, or people via historical narrative and competitive cross-section analysis."

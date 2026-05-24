@@ -1,0 +1,29 @@
+{
+  "skill_name": "damper-failure-analysis",
+  "version": "1.0.0",
+  "last_evolved": "2026-05-23T16:00:00+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-05-23T16:00:00+08:00",
+      "type": "feature",
+      "description": "合并shock-absorber-failure-analysis的证据分级体系、质量门和4个reference文件，初始化进化档案",
+      "conversation_hint": "skills目录优化整理 - 合并重复skill并补齐标准化组件",
+      "changes": [
+        "吸收 shock-absorber-failure-analysis 的证据分级系统和4个reference",
+        "新增证据分级标准（已确认/高置信假设/待验证/不成立）",
+        "新增No-go规则和质量门自检",
+        "新增Is/Is Not边界分析和证据清点步骤",
+        "创建 evolution.json",
+        "创建 evals/evals.json"
+      ]
+    }
+  ],
+  "lessons_learned": [],
+  "pending_improvements": [],
+  "stats": {
+    "total_evolutions": 1,
+    "bugs_fixed": 0,
+    "features_added": 1,
+    "lessons_recorded": 0
+  }
+}

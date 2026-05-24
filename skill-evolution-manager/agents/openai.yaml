@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Evolution Manager"
+  short_description: "Skills自动进化管理器：对话经验驱动迭代优化"
+  default_prompt: "Use $skill-evolution-manager to analyze conversation experience and iteratively improve Skills based on lessons learned."

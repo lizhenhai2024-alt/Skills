@@ -1,7 +1,7 @@
 {
   "skill_name": "pims-km",
-  "version": "1.0.0",
-  "last_evolved": "2026-05-23T14:00:00+08:00",
+  "version": "1.1.0",
+  "last_evolved": "2026-05-24T17:00:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -9,21 +9,87 @@
       "description": "初始化进化档案，纳入技能进化管理体系",
       "conversation_hint": "首次全量skills进化分析",
       "changes": ["创建 evolution.json", "纳入进化管理体系"]
+    },
+    {
+      "timestamp": "2026-05-24T17:00:00+08:00",
+      "type": "optimization",
+      "description": "从G盘+PIMS全盘整理实战中沉淀批处理经验",
+      "conversation_hint": "整理G盘并迁移到PIMS + PIMS内部_Unsorted_0101批量分类",
+      "changes": [
+        "新增跨盘迁移流程：非主PIMS盘整理后应合并到主盘",
+        "新增批量Unsorted处理策略：按主题领域归入0104_Reference",
+        "新增Thumbs.db标准清理步骤",
+        "新增交叉分类识别规则：代码/培训/HR误放检测",
+        "新增归档文件不滞留原则：压缩包应入08_Archive_Active子目录"
+      ]
     }
   ],
-  "lessons_learned": [],
+  "lessons_learned": [
+    {
+      "id": "L001",
+      "scenario": "用户有多个磁盘，G盘有单独的分类但不想维护两套PIMS",
+      "problem": "以前会将G盘独立按PIMS分类整理，导致数据分散在主盘和G盘，文件查起来要在多个盘搜",
+      "solution": "G盘先用PIMS分类临时整理，但最终目标是将内容合并到主PIMS盘(F:盘)。迁移后删除源盘空分类壳，只保留非PIMS内容(如Hi Backup)。",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.1.0"
+    },
+    {
+      "id": "L002",
+      "scenario": "50+条目的_Unsorted_XXXX大批量文件夹需要分类",
+      "problem": "试图逐条匹配到具体项目文件夹太细碎，效率极低且容易卡住",
+      "solution": "改为按主题领域分组归入0104_Reference的子分类(如阀系技术、设计管理、制造工艺、Product_Intro)，只有文件名明确对应已有项目文件夹时才归入0101_Projects。先粗后精，大块分组比精确匹配更高效。",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.1.0"
+    },
+    {
+      "id": "L003",
+      "scenario": "Windows系统目录中散布大量Thumbs.db缩略图缓存文件",
+      "problem": "之前整理没有清理Thumbs.db的意识，导致大量垃圾文件占用空间和目录",
+      "solution": "整理PIMS时必须执行全盘Thumbs.db清理：Get-ChildItem -Recurse -Filter 'Thumbs.db' | Remove-Item。在本次整理中一次性清除了534个。",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.1.0"
+    },
+    {
+      "id": "L004",
+      "scenario": "文件夹名称与实际内容类型不匹配导致误归位",
+      "problem": "_Drawings_Inbox名称看起来像图纸文件夹，实际内容是Python源码项目(图纸检索系统)，差点归入01_Work而非05_Code",
+      "solution": "不能只看文件夹名。进入目录检查文件类型分布：有app.py、requirements.txt、build目录的→05_Code；有.pdf/.xlsx/.dwg的→01_Work。类似地，含培训PPT/课程材料的文件夹→03_Learning，含绩效评估/个人考核的→02_Personal。",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.1.0"
+    },
+    {
+      "id": "L005",
+      "scenario": "归档文件(.7z/.zip)被用户放在分类夹根目录",
+      "problem": "季度绩效评估.7z直接放在08_Archive_Active根目录，导致该分类有零散文件",
+      "solution": "压缩包不应滞留在分类夹根目录，应建立 _XX归档 子目录放入。所有归档文件统一管理。",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.1.0"
+    }
+  ],
   "pending_improvements": [
     {
       "idea": "考虑增加PIMS编码体系版本号字段，方便追踪规则变更",
       "priority": "low",
       "suggested_by": "系统分析",
       "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "增加Thumbs.db清理步骤到归档模式流程中，作为标准预处理",
+      "priority": "medium",
+      "suggested_by": "实战经验",
+      "noted_at": "2026-05-24"
+    },
+    {
+      "idea": "增加跨盘迁移SOP：非主盘整理→内容合并→空壳清理完整流程",
+      "priority": "medium",
+      "suggested_by": "实战经验",
+      "noted_at": "2026-05-24"
     }
   ],
   "stats": {
-    "total_evolutions": 1,
+    "total_evolutions": 2,
     "bugs_fixed": 0,
     "features_added": 1,
-    "lessons_recorded": 0
+    "lessons_recorded": 5
   }
 }

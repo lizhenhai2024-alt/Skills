@@ -1,6 +1,8 @@
 ---
 name: skill-manager
 description: 本地Skills的大管家，负责所有本地Skills的管理、查询、版本监控和删除
+github_repo: lizhenhai2024-alt/Skills
+github_hash: 28a8ae9749ab3b2586253c22b5a48ad903145354
 ---
 
 # Skill Manager - 技能管理器

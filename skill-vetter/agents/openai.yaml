@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Vetter"
+  short_description: "安全审计：第三方Skill安装前检查危险信号/权限/可疑模式"
+  default_prompt: "Use $skill-vetter to security-audit third-party Skills before installation, checking for red flags, permission scope, and suspicious patterns."

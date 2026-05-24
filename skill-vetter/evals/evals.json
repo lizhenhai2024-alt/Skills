@@ -1,0 +1,31 @@
+{
+  "skill_name": "skill-vetter",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "third-party-skill-vetting",
+      "prompt": "我想安装ClawdHub上的一个skill叫'auto-coder'，它能自动读取代码库并生成PR。请先帮我审查安全风险。",
+      "expected_output": "应检查：来源可信度、权限需求（是否要求shell/文件写入/网络）、代码中是否有可疑模式（数据外泄/命令注入）、安装后的风险等级评估。给出通过/拒绝/需修改的建议。",
+      "files": [],
+      "assertions": [
+        {"name": "source_check", "description": "检查了来源可信度"},
+        {"name": "permission_analysis", "description": "分析了权限需求"},
+        {"name": "code_pattern_audit", "description": "审计了代码模式"},
+        {"name": "risk_grade", "description": "给出了风险等级"},
+        {"name": "actionable_verdict", "description": "给出明确的通过/拒绝/需修改建议"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "github-skill-review",
+      "prompt": "GitHub上有人分享了一个skill仓库，声称可以优化代码性能，请审查。https://github.com/unknown-user/perf-optimizer",
+      "expected_output": "应检查仓库历史（新建/低star/无维护记录为红标）、SKILL.md中的权限声明、是否有混淆代码、是否发送数据到外部URL。",
+      "files": [],
+      "assertions": [
+        {"name": "repo_history_check", "description": "检查了仓库历史和维护状态"},
+        {"name": "permission_declaration", "description": "核实了权限声明与实际需求"},
+        {"name": "external_call_check", "description": "检查了外部URL/数据外发风险"}
+      ]
+    }
+  ]
+}

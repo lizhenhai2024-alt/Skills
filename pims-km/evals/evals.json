@@ -1,0 +1,31 @@
+{
+  "skill_name": "pims-km",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "file-archiving",
+      "prompt": "我下载文件夹里有5份客户标准PDF和3份内部测试报告，请按PIMS v3.1体系归档。",
+      "expected_output": "应按PIMS编码规则对文件分类重命名，放入对应目录，建立与MOC的双链，更新MOC索引。归档过程中识别DR/FC/DL笔记机会。",
+      "files": [],
+      "assertions": [
+        {"name": "pims_coding_applied", "description": "使用PIMS编码规则分类"},
+        {"name": "bidirectional_links", "description": "建立了双链"},
+        {"name": "moc_updated", "description": "MOC索引已更新"},
+        {"name": "knowledge_distillation_hint", "description": "标注了可蒸馏为DR/FC/DL的内容"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "knowledge-distillation",
+      "prompt": "这篇减振器密封失效分析报告里有很多经验教训，帮我蒸馏成DR笔记和FC笔记。",
+      "expected_output": "应提取设计规则(DR)和失效案例(FC)，按PIMS模板格式写入对应目录，建立与原文的双链。",
+      "files": [],
+      "assertions": [
+        {"name": "dr_extracted", "description": "提取了设计规则(DR)"},
+        {"name": "fc_extracted", "description": "提取了失效案例(FC)"},
+        {"name": "template_compliance", "description": "符合PIMS DR/FC模板格式"},
+        {"name": "source_linked", "description": "与原文建立了双链"}
+      ]
+    }
+  ]
+}

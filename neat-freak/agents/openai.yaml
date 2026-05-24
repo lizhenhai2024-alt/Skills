@@ -1,0 +1,4 @@
+interface:
+  display_name: "Neat Freak"
+  short_description: "OCD级项目知识清理：CLAUDE.md/README/docs/内存与代码库一致性检查"
+  default_prompt: "Use $neat-freak to reconcile project documentation and agent memory with the current codebase state."

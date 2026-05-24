@@ -1,0 +1,29 @@
+{
+  "skill_name": "skill-manager",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "list-installed-skills",
+      "prompt": "列出我所有已安装的skill，并检查哪些有GitHub更新。",
+      "expected_output": "应以表格列出所有skill（名称/版本/来源/状态），标注有更新的skill，给出更新建议。",
+      "files": [],
+      "assertions": [
+        {"name": "complete_listing", "description": "列出所有已安装skill"},
+        {"name": "version_check", "description": "检查了GitHub更新"},
+        {"name": "update_advice", "description": "给出更新建议"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "skill-removal",
+      "prompt": "我想删除khazix-skills这个skill，它与khazix-writer功能重叠了。",
+      "expected_output": "应确认删除目标，检查是否有其他skill依赖它，执行删除并更新相关配置。",
+      "files": [],
+      "assertions": [
+        {"name": "dependency_check", "description": "检查了依赖关系"},
+        {"name": "safe_removal", "description": "安全删除，未破坏其他skill"},
+        {"name": "cleanup_complete", "description": "相关配置已清理"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "skill_name": "damper-research-expert",
+  "version": "1.0.0",
+  "last_evolved": "2026-05-23T16:00:00+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-05-23T16:00:00+08:00",
+      "type": "feature",
+      "description": "初始化进化档案，纳入进化管理体系",
+      "conversation_hint": "skills目录优化整理",
+      "changes": ["创建 evolution.json", "创建 agents/openai.yaml", "创建 evals/evals.json"]
+    }
+  ],
+  "lessons_learned": [],
+  "pending_improvements": [],
+  "stats": {
+    "total_evolutions": 1,
+    "bugs_fixed": 0,
+    "features_added": 1,
+    "lessons_recorded": 0
+  }
+}

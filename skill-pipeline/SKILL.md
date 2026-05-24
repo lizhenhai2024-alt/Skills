@@ -2,6 +2,8 @@
 name: skill-pipeline
 version: "1.0.0"
 description: "Parallel batch skill installation with security vetting and GFW-resilient networking. TRIGGER when: installing multiple skills at once, bulk-importing skills from a checklist, vetting skills before installation, or recovering from network failures during skill setup."
+github_repo: lizhenhai2024-alt/Skills
+github_hash: 28a8ae9749ab3b2586253c22b5a48ad903145354
 ---
 
 # Skill Pipeline — Parallel Vetting & Installation

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Damper Failure Analysis"
+  short_description: "Evidence-based automotive damper failure analysis reports"
+  default_prompt: "Use $damper-failure-analysis to analyze an automotive shock absorber failure and produce a Chinese 8D/FA report."

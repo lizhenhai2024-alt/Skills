@@ -1,0 +1,30 @@
+{
+  "skill_name": "khazix-writer",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "tech-article-writing",
+      "prompt": "写一篇关于Apple Vision Pro发布一年后的反思文章，分析为什么这款产品没有成为革命性产品。",
+      "expected_output": "应以卡兹克风格写作：好奇、人性化、真诚、有观点。开篇有钩子，中间有深度分析，结尾有思考。篇幅适合公众号发布（3000-5000字）。",
+      "files": [],
+      "assertions": [
+        {"name": "khazix_voice", "description": "文风符合卡兹克特点（好奇/人性/真诚/有观点）"},
+        {"name": "hook_opening", "description": "开篇有吸引人的钩子"},
+        {"name": "depth_analysis", "description": "分析有深度，非表面描述"},
+        {"name": "wechat_format", "description": "篇幅和排版适合公众号发布"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "personal-narrative",
+      "prompt": "写一篇关于'一个程序员从大厂裸辞做独立开发三个月后'的长文。",
+      "expected_output": "应以第一人称或第三人称叙事，保持真实感和共鸣，有情感流动而非干瘪的时间线，结尾有余味。",
+      "files": [],
+      "assertions": [
+        {"name": "emotional_authenticity", "description": "情感真实有共鸣"},
+        {"name": "not_just_timeline", "description": "不只是一条时间线，有内心变化"},
+        {"name": "memorable_ending", "description": "结尾有余味"}
+      ]
+    }
+  ]
+}
