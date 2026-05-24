@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor",
-  "version": "1.2.0",
-  "last_evolved": "2026-05-24T01:00:00+08:00",
+  "version": "2.0.0",
+  "last_evolved": "2026-05-24T04:00:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T23:55:00+08:00",
@@ -42,6 +42,20 @@
         "自检四层：硬性规则扫描→评估一致性检查→内容质量检查→输出完整性检查",
         "更新 evolution.json v1.2.0"
       ]
+    },
+    {
+      "timestamp": "2026-05-24T04:00:00+08:00",
+      "type": "feature",
+      "description": "引入Career-Ops式数据契约、投递追踪、幽灵岗位检测和STAR+R故事库",
+      "conversation_hint": "用户要求按推荐借鉴Career-Ops求职架构执行",
+      "changes": [
+        "新增data/用户层与references/系统层分离，用户数据不随skill进化覆盖",
+        "新增投递追踪器data/applications.md，支持待投递、已投递、笔试/测评、面试中、已录用、已拒绝、疑似幽灵状态",
+        "新增STAR+R故事库data/story-bank.md，用于沉淀面试经历",
+        "新增references/ghost-job-signals.md，评估岗位真实性并标记疑似幽灵岗位",
+        "新增references/keyword-library.md，将关键词扫描规则外置",
+        "SKILL.md改为读取数据层文件，减少硬编码并支持后续迭代"
+      ]
     }
   ],
   "lessons_learned": [
@@ -75,9 +89,9 @@
     }
   ],
   "stats": {
-    "total_evolutions": 4,
+    "total_evolutions": 5,
     "bugs_fixed": 0,
-    "features_added": 3,
+    "features_added": 4,
     "optimizations": 1,
     "lessons_recorded": 1
   }
