@@ -121,7 +121,13 @@ WebSearch 的局限性：搜索招聘信息时，WebSearch 返回的是招聘简
 | **聚合平台** | 实习僧/BOSS直聘 | `shixiseng.com`、`zhipin.com` | 日常实习信息 |
 
 > **注意**：飞书/Mioffice页面是 SPA（单页应用），岗位列表通过 JavaScript 动态加载。CDP 打开后需等页面完全渲染，部分页面有分页。WebSearch 搜不到这些 SPA 页面内部的岗位数据，必须 CDP 直达。
-> **注意2**：部分公司同时运行两套招聘系统（如同时有飞书旧站和自建新站），CDP搜索时如发现一套系统中岗位有限，应尝试查找另一套系统。
+> **注意2**：部分公司同时运行两套招聘系统（如飞书旧站已停用，岗位数据仅在新站后端API中）。CDP搜索时如发现一套系统中岗位为0，应立即尝试另一套系统或逆向API。
+
+**SPA零岗位逆向规则**：当飞书/Mioffice/自建站SPA页面显示0岗位或未渲染岗位列表时，不要放弃——检查页面加载的JS资源，逆向定位后端API接口，直接调用API获取岗位数据。典型模式：
+1. CDP打开页面后提取 `performance.getEntriesByType('resource')` 中的API请求URL
+2. 下载主JS文件，搜索 `/api/`、`job_posts`、`getJob` 等关键词定位接口
+3. 用Python/PowerShell直接调用接口，绕过SPA渲染问题
+4. 已验证案例：安克创新飞书旧站0岗位 → 逆向 `open.anker-in.com/service/lark/openapi/getJobPosts/` API → 成功获取13个实习岗位
 
 **聚合平台API现状与接入策略：**
 

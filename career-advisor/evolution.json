@@ -1,7 +1,7 @@
 {
   "skill_name": "career-advisor",
-  "version": "2.0.0",
-  "last_evolved": "2026-05-24T04:00:00+08:00",
+  "version": "2.1.0",
+  "last_evolved": "2026-05-24T16:12:44+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T23:50:00+08:00",
@@ -56,6 +56,20 @@
         "新增references/keyword-library.md，将关键词扫描规则外置",
         "SKILL.md改为读取数据层文件，减少硬编码并支持后续迭代"
       ]
+    },
+    {
+      "timestamp": "2026-05-24T16:12:44+08:00",
+      "type": "optimization",
+      "description": "安克创新招聘入口升级为API直达 + 新增SPA零岗位逆向规则",
+      "conversation_hint": "试运行发现飞书旧站0岗位，逆向新站API成功获取13个实习岗位",
+      "changes": [
+        "安克创新招聘入口从飞书旧站(feishu.cn/189381)改为API直达(open.anker-in.com/service/lark/openapi/getJobPosts/)",
+        "新增SPA零岗位逆向规则：当SPA页面显示0岗位时，逆向JS定位后端API接口直接调用",
+        "更新飞书招聘类型说明，安克从飞书代表公司中移除（旧站已停用）",
+        "更新自建站类型说明，安克标注为career.anker-in.com + API直达",
+        "创建web-access站点经验文件references/site-patterns/anker-in.com.md",
+        "修复daughter SKILL.md中六步→七步残留不一致"
+      ]
     }
   ],
   "lessons_learned": [
@@ -89,10 +103,10 @@
     }
   ],
   "stats": {
-    "total_evolutions": 4,
+    "total_evolutions": 5,
     "bugs_fixed": 0,
     "features_added": 3,
-    "optimizations": 1,
+    "optimizations": 2,
     "lessons_recorded": 1
   }
 }

@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor-daughter",
-  "version": "2.0.0",
-  "last_evolved": "2026-05-24T04:00:00+08:00",
+  "version": "2.1.0",
+  "last_evolved": "2026-05-24T16:12:44+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -193,6 +193,20 @@
         "新增references/keyword-library.md，将关键词扫描规则外置",
         "SKILL.md改为读取数据层文件，减少硬编码并支持后续迭代"
       ]
+    },
+    {
+      "timestamp": "2026-05-24T16:12:44+08:00",
+      "type": "optimization",
+      "description": "安克创新招聘入口升级为API直达 + 新增SPA零岗位逆向规则",
+      "conversation_hint": "试运行发现飞书旧站0岗位，逆向新站API成功获取13个实习岗位",
+      "changes": [
+        "安克创新招聘入口从飞书旧站(feishu.cn/189381)改为API直达(open.anker-in.com/service/lark/openapi/getJobPosts/)",
+        "新增SPA零岗位逆向规则：当SPA页面显示0岗位时，逆向JS定位后端API接口直接调用",
+        "更新飞书招聘类型说明，安克从飞书代表公司中移除（旧站已停用）",
+        "更新自建站类型说明，安克标注为career.anker-in.com + API直达",
+        "创建web-access站点经验文件references/site-patterns/anker-in.com.md",
+        "修复daughter SKILL.md中六步→七步残留不一致"
+      ]
     }
   ],
   "lessons_learned": [
@@ -323,6 +337,14 @@
       "solution": "新增「公司招聘公众号」信源渠道：在微信中搜索该公司招聘公众号，从中获取最新官方校招网站的URL。公众号中发布的校招入口通常含实习/校招专有路径，比通用官网首页更精准",
       "first_occurred": "2026-05-24",
       "fixed_in_version": "1.11.0"
+    },
+    {
+      "id": "L002",
+      "scenario": "CDP访问安克创新飞书旧招聘站",
+      "problem": "飞书旧站anker-in.jobs.feishu.cn/189381/position/显示0岗位，浪费大量时间尝试CDP交互和搜索框筛选，实际原因是该旧站已停用，数据已迁移到新站career.anker-in.com的后端API",
+      "solution": "当SPA页面显示0岗位时，应立即执行逆向：1)提取页面JS资源中的API URL；2)下载主JS文件搜索getJobPosts等接口；3)直接调用API。同时创建站点经验文件记录已知API和参数，避免重复逆向。通用化为SPA零岗位逆向规则，写入所有求职skill。",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "2.1.0"
     }
   ],
   "pending_improvements": [
@@ -358,10 +380,10 @@
     }
   ],
   "stats": {
-    "total_evolutions": 14,
+    "total_evolutions": 15,
     "bugs_fixed": 5,
     "features_added": 7,
-    "optimizations": 2,
+    "optimizations": 3,
     "lessons_recorded": 16
   }
 }

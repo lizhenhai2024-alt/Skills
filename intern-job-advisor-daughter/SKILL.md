@@ -334,14 +334,20 @@ WebSearch 的局限性：搜索招聘信息时，WebSearch 返回的是招聘简
 
 | 类型 | 特征 | URL 模式 | 代表公司 |
 |------|------|----------|----------|
-| **飞书招聘** | 字节旗下ATS，SPA页面，岗位数据通过内部API加载 | `{公司}.jobs.feishu.cn/{tenant_id}/position/` | 安克创新（旧站）、蓝禾/图拉斯、影石Insta360 |
+| **飞书招聘** | 字节旗下ATS，SPA页面，岗位数据通过内部API加载 | `{公司}.jobs.feishu.cn/{tenant_id}/position/` | 蓝禾/图拉斯、影石Insta360 |
 | **Mioffice招聘** | 飞书旗下另一ATS，与feishu同架构 | `{公司}.jobs.f.mioffice.cn` | 小米 |
 | **Moka招聘** | 常见ATS | `{公司}.zhiye.com/campus` | SHEIN、OPPO、vivo、泡泡玛特 |
-| **自建站** | 大厂自研招聘系统 | `career.{公司}.com`、`jobs.bytedance.com` | 字节跳动、华为、腾讯、大疆、安克创新（新站career.anker-in.com） |
+| **自建站** | 大厂自研招聘系统 | `career.{公司}.com`、`jobs.bytedance.com` | 字节跳动、华为、腾讯、大疆、安克创新（career.anker-in.com + API直达） |
 | **聚合平台** | 实习僧/BOSS直聘 | `shixiseng.com`、`zhipin.com` | 日常实习信息 |
 
 > **注意**：飞书/Mioffice页面是 SPA（单页应用），岗位列表通过 JavaScript 动态加载。CDP 打开后需等页面完全渲染，部分页面有分页。WebSearch 搜不到这些 SPA 页面内部的岗位数据，必须 CDP 直达。
-> **注意2**：部分公司同时运行两套招聘系统（如安克创新同时有飞书旧站和自建新站），CDP搜索时如发现一套系统中岗位有限，应尝试查找另一套系统。
+> **注意2**：部分公司同时运行两套招聘系统（如安克创新飞书旧站已停用，岗位数据仅在新站 career.anker-in.com 的后端API中）。CDP搜索时如发现一套系统中岗位为0，应立即尝试另一套系统或逆向API。
+
+**SPA零岗位逆向规则**：当飞书/Mioffice/自建站SPA页面显示0岗位或未渲染岗位列表时，不要放弃——检查页面加载的JS资源，逆向定位后端API接口，直接调用API获取岗位数据。典型模式：
+1. CDP打开页面后提取 `performance.getEntriesByType('resource')` 中的API请求URL
+2. 下载主JS文件，搜索 `/api/`、`job_posts`、`getJob` 等关键词定位接口
+3. 用Python/PowerShell直接调用接口，绕过SPA渲染问题
+4. 已验证案例：安克创新飞书旧站0岗位 → 逆向 `open.anker-in.com/service/lark/openapi/getJobPosts/` API → 成功获取13个实习岗位
 
 **聚合平台API现状与接入策略：**
 
@@ -387,7 +393,7 @@ WebSearch 的局限性：搜索招聘信息时，WebSearch 返回的是招聘简
 | 大疆 | we.dji.com/campus | 海外运营/市场 |
 | 影石Insta360 | arashivision.jobs.feishu.cn/campus | 海外市场/PR/KOL |
 | **国际化品牌** | |
-| 安克创新 | anker-in.jobs.feishu.cn/189381/position/ | **飞书招聘页，全部在招岗位在此** |
+| 安克创新 | **API直达** `open.anker-in.com/service/lark/openapi/getJobPosts/{websiteId}` | **飞书旧站已停用，用API直达获取岗位；websiteId=7268177039772633400，实习subject_id=7585117336022829322** |
 | 蓝禾/图拉斯 | lanhevip.jobs.feishu.cn | 亚马逊运营/海外营销 |
 | 泡泡玛特 | popmart.zhiye.com/campus | 海外社媒/IP运营 |
 | 美的 | careers.midea.com | 海外营销类/美少年计划 |
@@ -443,7 +449,7 @@ WebSearch 的局限性：搜索招聘信息时，WebSearch 返回的是招聘简
 
 1. 从**CDP获取的岗位列表**中提取具体岗位信息（公司、岗位名称、**发布时间**、**实习周期**、职责摘要、任职要求、投递链接）
 2. 过滤掉明显不相关的结果（如技术开发类、纯职能类等不适合英语专业的岗位）
-3. 对每个有效岗位按核心分析流程（六步）评估
+3. 对每个有效岗位按核心分析流程（七步）评估
 4. 如果搜索结果中包含详细JD，直接评估；如果只有岗位名称和简短描述，标注"信息来自CDP浏览页面，建议查看完整JD"后给出初步评估
 5. 优先展示 `data/profile.md` 的目标公司中的岗位
 6. **多重关键词去重与补漏**：同一个公司的岗位列表去重后，检查是否有命名方式不同但同样适配的岗位被遗漏（如"ANZ GTM实习生"和"欧洲GTM实习生"属于同一方向不同区域）
@@ -465,7 +471,7 @@ WebSearch 的局限性：搜索招聘信息时，WebSearch 返回的是招聘简
 
 > **说明：** 按适配度从高到低排列。
 ---
-（接下来按常规六步流程逐个评估）
+（接下来按常规七步流程逐个评估）
 ```
 
 ### 搜索频率与质量保障
