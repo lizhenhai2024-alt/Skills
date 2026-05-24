@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor-daughter",
-  "version": "3.1.0",
-  "last_evolved": "2026-05-24T20:00:00+08:00",
+  "version": "3.2.0",
+  "last_evolved": "2026-05-24T23:30:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -235,6 +235,59 @@
         "新增icon字体数字问题说明（CDP/Jina均无法正确提取）",
         "新增重要提示：目标公司用海外运营而非跨境电商关键词"
       ]
+    },
+    {
+      "timestamp": "2026-05-24T19:30:00+08:00",
+      "type": "optimization",
+      "description": "v3.0.0 全面重构 — 从过程手册转为原则驱动+gotchas结构化，对照GitHub trending最佳实践",
+      "conversation_hint": "用户要求优化skill，感觉检索效率和排版不如昨天版本，要求参考GitHub trending skill重新评估",
+      "changes": [
+        "SKILL.md 从660行精简至~240行（-64%）",
+        "移除6条内嵌进化记录 → evolution.json唯一记录源",
+        "描述从4句200字精简为1句含正负触发条件",
+        "搜索策略从详尽操作手册转为三阶段原则+5条gotchas",
+        "输出格式从40行模板精简为15行紧凑参考",
+        "新增 Gotchas 章节：10条真实失败经验结构化记录"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T20:00:00+08:00",
+      "type": "optimization",
+      "description": "v3.1.0 搜索策略重构 — 从双通道改为三阶段，WebSearch快速扫描升格为第一阶段",
+      "conversation_hint": "用户指出检索分类效率没有昨天快，改用WebSearch并行快速扫描→确认有岗→CDP精准获取JD",
+      "changes": [
+        "搜索策略从双通道(实习僧+官网)改为三阶段(WebSearch扫描→实习僧JD→官网补漏)",
+        "WebSearch从'仅补充信息'升格为第一阶段快速扫描工具",
+        "新增实践验证：10家公司2分钟并行WebSearch完成扫描",
+        "Gotchas新增搜索陷阱#1：WebSearch扫描比CDP快50倍"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T22:00:00+08:00",
+      "type": "optimization",
+      "description": "v3.1.1 公司清单扩展 — 小红书/榜单推荐出海公司补充到profile.md",
+      "conversation_hint": "用户要求检索小红书推荐出海公司，扩大出海公司范围补充到skill",
+      "changes": [
+        "profile.md新增4家公司：九号公司(Segway-Ninebot)、创想三维(Creality)、乐歌股份(Loctek)、赛维时代(Sailvan Times)",
+        "大疆创新标注BrandOS #1排名(521.4分)强化定位",
+        "SKILL.md新增Gotchas #11：公司清单不能只靠记忆维护，每季度用榜单交叉验证",
+        "版本号更新至v3.1.1"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T23:30:00+08:00",
+      "type": "bugfix",
+      "description": "v3.2.0 安克API字段提取修复 — PowerShell编码问题诊断+新增3个安克岗位+报告校正",
+      "conversation_hint": "用户反馈安克岗位名称不符且检索到的岗位偏少",
+      "changes": [
+        "修复PowerShell提取安克API中文字段空白问题——Latin-1→UTF-8编码丢失，改用ConvertTo-Json保存原始JSON后读取",
+        "通过API `title` 字段校正报告4个岗位名称（欧洲GTM/品牌经理/电商实习生/推广运营）",
+        "新增3个API发现的岗位：ANZ DTC(8/10)、ANZ KAM/零售(7/10)、ANZ GTM分离独立",
+        "报告搜索摘要从32扩至35岗，推荐/保底表同步更新",
+        "applications.md新增ANZ DTC和ANZ KAM/零售两条投递记录",
+        "SKILL.md新增Gotchas #7：PowerShell处理安克API中文编码坑",
+        "进化记录和lesson同步更新"
+      ]
     }
   ],
   "lessons_learned": [
@@ -389,6 +442,14 @@
       "solution": "关键词即筛选器。在聚合平台上不同关键词决定返回的公司层级。实习生搜索调整为：优先\"海外运营\"\"海外市场\"两组（得物/快手/网易/哈啰等），其次\"海外KOL/红人营销\"\"品牌出海\"，最后用目标公司名搜索补漏。移除\"跨境电商\"组（仅返回小公司）",
       "first_occurred": "2026-05-24",
       "fixed_in_version": "2.2.1"
+    },
+    {
+      "id": "L019",
+      "scenario": "用PowerShell提取安克API返回的中文字段时",
+      "problem": "Invoke-RestMethod 获取安克API数据后，$_.title 等字段在 PowerShell 5.1 管道输出中全部为空白——实际数据已返回，但 Latin-1→UTF-8 编码转换在管道中丢失，导致误判为API返回空字段",
+      "solution": "用 $response | ConvertTo-Json -Depth 5 | Out-File 保存原始JSON后直接读取，或使用 Python json.load() 解码。address/jobFunction 等嵌套JSON字段需二次 ConvertFrom-Json 解析",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "3.2.0"
     }
   ],
   "pending_improvements": [
@@ -423,45 +484,11 @@
       "noted_at": "2026-05-23"
     }
   ],
-    {
-      "timestamp": "2026-05-24T19:30:00+08:00",
-      "type": "optimization",
-      "description": "v3.0.0 全面重构 — 从过程手册转为原则驱动+gotchas结构化，对照GitHub trending最佳实践",
-      "conversation_hint": "用户要求优化skill，感觉检索效率和排版不如昨天版本，要求参考GitHub trending skill重新评估",
-      "changes": [
-        "SKILL.md 从660行精简至~240行（-64%）",
-        "移除6条内嵌进化记录 → evolution.json唯一记录源",
-        "描述从4句200字精简为1句含正负触发条件",
-        "搜索策略从详尽操作手册转为双通道原则+5条gotchas",
-        "输出格式从40行模板精简为15行紧凑参考",
-        "颜色规范从3次重复合并为1处内联",
-        "自检从4层23项精简为7项核心检查",
-        "移除冗余章节：维护建议、待优化清单、重复分析原则",
-        "新增 Gotchas 章节：10条真实失败经验结构化记录",
-        "统一'通道A优先'为'双通道并行'表述",
-        "边界情况从5条扩展描述压缩为5条单行"
-      ]
-    },
-    {
-      "timestamp": "2026-05-24T20:00:00+08:00",
-      "type": "optimization",
-      "description": "v3.1.0 搜索策略重构 — 从双通道改为三阶段，WebSearch快速扫描升格为第一阶段",
-      "conversation_hint": "用户指出检索分类效率没有昨天快，分析原因：实习僧子Agent每个做5组关键词太重。改用WebSearch并行快速扫描→确认有岗→CDP精准获取JD",
-      "changes": [
-        "搜索策略从双通道(实习僧+官网)改为三阶段(WebSearch扫描→实习僧JD→官网补漏)",
-        "WebSearch从'仅补充信息'升格为第一阶段快速扫描工具",
-        "新增实践验证数据：10家公司2分钟并行WebSearch完成扫描",
-        "Gotchas新增搜索陷阱#1：WebSearch扫描比CDP快50倍",
-        "实习僧CDP降为第二阶段：仅对确认有岗的公司精准获取JD",
-        "公司官网降为第三阶段：仅对实习僧未收录的岗位补漏"
-      ]
-    }
-  ],
   "stats": {
-    "total_evolutions": 19,
-    "bugs_fixed": 6,
+    "total_evolutions": 23,
+    "bugs_fixed": 7,
     "features_added": 7,
-    "optimizations": 6,
-    "lessons_recorded": 18
+    "optimizations": 9,
+    "lessons_recorded": 19
   }
 }

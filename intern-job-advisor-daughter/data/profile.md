@@ -21,14 +21,14 @@ SHEIN、TEMU/PDD、Shopee、Lazada、速卖通(Aliexpress)、Amazon
 
 ### 消费电子出海
 **手机/OEM**：华为终端、小米国际、OPPO、vivo、荣耀(Honor)、一加(OnePlus)、真我(Realme)、传音控股(Transsion)
-**智能硬件**：大疆、影石Insta360、韶音科技(Shokz)
-**智能家居/家电**：科沃斯、追觅、石头科技、绿联、倍思、傲雷、拓竹科技(Bambu Lab)、TCL、海信、美的海外、海尔
+**智能硬件**：大疆（BrandOS #1, 521.4分）、影石Insta360、韶音科技(Shokz)、九号公司(Segway-Ninebot)、创想三维(Creality)
+**智能家居/家电**：科沃斯、追觅、石头科技、绿联、倍思、傲雷、拓竹科技(Bambu Lab)、乐歌股份(Loctek)、TCL、海信、美的海外、海尔
 
 ### 互联网/平台
 腾讯、字节跳动、小红书、美团、京东、网易
 
 ### 国际化品牌
-泡泡玛特、名创优品、米哈游、比亚迪（海外业务）、联想（国际化）、安克创新、致欧科技
+泡泡玛特、名创优品、米哈游、比亚迪（海外业务）、联想（国际化）、安克创新、致欧科技、赛维时代(Sailvan Times)
 
 ### 新锐出海品牌（关注列表）
 图拉斯(Torras)、曜曜集团、RENOGY、Cider、Halara
