@@ -194,3 +194,14 @@ mv ~/.claude/skills/{skill-name} ~/.claude/skills/.trash/{skill-name}.{timestamp
 
 **学到的教训：**
 > 作为基础设施类 skill，仅靠文档说明不足以发挥价值，应考虑增加实际执行脚本。
+
+---
+
+## 自检清单
+
+- [ ] 查询前确认了 skill 名称拼写正确
+- [ ] 版本检查结果已向用户展示新旧版本差异
+- [ ] 删除操作前已备份 skill 到 .trash 目录
+- [ ] 没有误删其他用户的自研 skill
+- [ ] 最终输出格式清晰（表格/列表）
+- [ ] evolution.json 中的版本号与当前一致

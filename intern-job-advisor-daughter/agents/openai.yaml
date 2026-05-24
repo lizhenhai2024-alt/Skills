@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intern Job Advisor (Daughter)"
+  short_description: "跨境电商/DTC/品牌出海方向实习求职顾问，湖大英语专业定制"
+  default_prompt: "Use $intern-job-advisor-daughter to search and evaluate cross-border ecommerce, DTC, and brand globalization internship positions for a Hunan University English major student."

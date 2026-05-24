@@ -1,0 +1,21 @@
+{
+  "name": "pims-agent",
+  "version": "1.0.0",
+  "created": "2026-05-24",
+  "evolution_history": [
+    {
+      "date": "2026-05-24",
+      "version": "1.0.0",
+      "change": "初始版本 — 6阶段流水线(Scan/Classify/Dry-Run/Verify/Execute/Report) + Operation Journal回滚机制 + 分类决策矩阵",
+      "trigger": "PIMS优化报告Horizon项：自治Agent"
+    }
+  ],
+  "lessons_learned": [],
+  "pending_improvements": [],
+  "stats": {
+    "total_sessions": 0,
+    "total_files_processed": 0,
+    "total_rollbacks": 0,
+    "last_used": null
+  }
+}

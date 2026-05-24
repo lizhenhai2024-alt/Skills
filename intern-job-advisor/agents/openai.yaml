@@ -1,0 +1,4 @@
+interface:
+  display_name: "Intern Job Advisor"
+  short_description: "通用大厂实习求职顾问：任意专业/行业，六步分析+动态薪酬"
+  default_prompt: "Use $intern-job-advisor to search, filter, and evaluate internship and campus recruitment positions for any major or industry."

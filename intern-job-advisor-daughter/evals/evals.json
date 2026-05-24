@@ -1,0 +1,30 @@
+{
+  "skill_name": "intern-job-advisor-daughter",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "cross-border-ecommerce-search",
+      "prompt": "帮我搜索2026年暑期跨境电商运营或DTC品牌相关的实习岗位，base广州或深圳。",
+      "expected_output": "应基于湖南大学英语专业学生画像，在40+公司库中匹配跨境电商/DTC/品牌出海方向，使用出海薪资基准评估，输出岗位排名和投递策略。",
+      "files": [],
+      "assertions": [
+        {"name": "user_profile_applied", "description": "应用了湖大英语专业学生画像"},
+        {"name": "company_library_used", "description": "使用了40+公司库匹配"},
+        {"name": "industry_salary_benchmark", "description": "使用出海行业薪资基准"},
+        {"name": "actionable_plan", "description": "输出可执行的投递计划"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "career-expansion-advice",
+      "prompt": "我是英语专业学生，除了跨境电商，还有哪些高成长方向值得考虑？",
+      "expected_output": "应推荐五大拓展方向（AI国际化产品运营/游戏出海/短剧网文出海/海外KOL营销/AI数据运营），评估每个方向对英语专业的适配度和薪资前景。",
+      "files": [],
+      "assertions": [
+        {"name": "five_directions_covered", "description": "覆盖五大拓展方向"},
+        {"name": "fit_assessment", "description": "评估英语专业适配度"},
+        {"name": "salary_outlook", "description": "包含薪资前景评估"}
+      ]
+    }
+  ]
+}

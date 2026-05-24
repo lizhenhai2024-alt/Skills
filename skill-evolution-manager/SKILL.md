@@ -391,3 +391,15 @@ python {baseDir}/scripts/align_all.py
 
 **学到的教训：**
 > 进化管理器从纯文档升级为脚本+文档双驱动。脚本保证经验持久化不丢失，文档保证方法论可理解。跨版本对齐是批量更新后的关键步骤——否则经验会随版本更新而丢失。
+
+---
+
+## 自检清单
+
+- [ ] 本次对话确实产生了值得沉淀的新经验（非重复已有内容）
+- [ ] evolution.json 追加后验证了 JSON 格式正确
+- [ ] lessons_learned 是具体教训而非空话（"不要XXX"而非"注意XXX"）
+- [ ] 没有把单次事故记录成通用经验
+- [ ] 跨版本对齐（align_all.py）已执行，所有 skill 的 evolution.json 格式统一
+- [ ] 智能缝合（smart_stitch.py）没有破坏 SKILL.md 已有结构
+- [ ] "学到的教训"部分已更新到 SKILL.md 末尾

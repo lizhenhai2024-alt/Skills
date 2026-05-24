@@ -1,0 +1,29 @@
+{
+  "skill_name": "intern-job-advisor",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "cross-major-job-search",
+      "prompt": "我是机械工程研一学生，想转行做产品经理实习，base深圳。请帮我搜索合适岗位并给出投递建议。",
+      "expected_output": "应构建用户画像（专业背景/转行意向/地点），搜索适合转行生的PM实习岗位，评估每个岗位对转专业学生的友好度，给出简历优化方向。",
+      "files": [],
+      "assertions": [
+        {"name": "career_switch_awareness", "description": "考虑转行因素，推荐对转专业友好的岗位"},
+        {"name": "resume_advice", "description": "给出针对性的简历优化建议"},
+        {"name": "six_step_analysis", "description": "完整执行六步分析"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "salary-benchmark",
+      "prompt": "2026年互联网大厂产品经理实习生的薪资大概什么水平？请给我北京/上海/深圳三地的对比。",
+      "expected_output": "应给出三地PM实习薪资范围（日薪/月薪）、不同公司梯队的差异、福利和转正薪资预期，数据需标明来源。",
+      "files": [],
+      "assertions": [
+        {"name": "city_comparison", "description": "三地薪资对比"},
+        {"name": "company_tier", "description": "区分不同公司梯队的薪资差异"},
+        {"name": "data_sourced", "description": "薪资数据有来源"}
+      ]
+    }
+  ]
+}

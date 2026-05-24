@@ -1,0 +1,30 @@
+{
+  "skill_name": "career-advisor",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "job-search-by-major",
+      "prompt": "我是计算机科学专业研二学生，想找2026年暑期算法实习，base北京或上海，请帮我搜索合适的岗位并评估。",
+      "expected_output": "应构建用户画像（专业/年级/方向/地点），使用CDP搜索在招岗位，按六步分析法评估每个岗位（匹配度/成长性/薪资/公司前景/工作内容/投递策略），给出排名推荐。",
+      "files": [],
+      "assertions": [
+        {"name": "user_profile_constructed", "description": "构建了用户画像"},
+        {"name": "six_step_analysis", "description": "使用六步分析法评估岗位"},
+        {"name": "salary_evaluation", "description": "包含动态薪酬评估"},
+        {"name": "actionable_recommendations", "description": "给出可执行的投递建议"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "offer-comparison",
+      "prompt": "我拿到了字节跳动和腾讯的暑期实习offer，都是后端开发，请帮我对比分析。字节base深圳总包高15%，腾讯base北京但组更核心。",
+      "expected_output": "应从薪资、成长空间、组内地位、城市因素、转正概率、长期发展等维度做对比，给出明确推荐和理由。",
+      "files": [],
+      "assertions": [
+        {"name": "multi_dimension_comparison", "description": "多维度对比两个offer"},
+        {"name": "quantitative_analysis", "description": "包含薪资量化分析"},
+        {"name": "clear_recommendation", "description": "给出明确推荐和理由"}
+      ]
+    }
+  ]
+}
