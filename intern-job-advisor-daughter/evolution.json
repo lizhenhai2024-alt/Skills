@@ -1,7 +1,7 @@
 {
   "skill_name": "intern-job-advisor-daughter",
-  "version": "2.1.0",
-  "last_evolved": "2026-05-24T16:12:44+08:00",
+  "version": "3.0.0",
+  "last_evolved": "2026-05-30T00:00:00+08:00",
   "evolution_history": [
     {
       "timestamp": "2026-05-23T14:00:00+08:00",
@@ -207,9 +207,45 @@
         "创建web-access站点经验文件references/site-patterns/anker-in.com.md",
         "修复daughter SKILL.md中六步→七步残留不一致"
       ]
+    },
+    {
+      "timestamp": "2026-05-30T00:00:00+08:00",
+      "type": "feature",
+      "description": "公司库从~40家升级为~150家10梯队 S/A/B/C 优先级体系 + 关键词库从2类升级为12方向搜索系统",
+      "conversation_hint": "用户提供完整Excel（目标公司库146行+岗位关键词库57行+评分体系+监控日历+搜索策略），要求同步到skill",
+      "changes": [
+        "data/profile.md: 公司库从简单分类(~50家)升级为10梯队S/A/B/C四级(~150家)，含消费电子出海/跨境电商平台/互联网国际化/品牌新消费/跨境服务/新能源/游戏出海/SaaS/外企等",
+        "references/keyword-library.md: 从高/低价值2类升级为12方向搜索系统（海外运营/海外营销/品牌/用户增长/海外BD/内容本地化/产品运营/数据分析/客户支持/供应链/财务合规），含S/A/B优先级",
+        "SKILL.md第一层：目标公司库更新为10梯队覆盖表（含每轮覆盖比例）",
+        "SKILL.md第二层：岗位关键词库从5方向扩至12方向+优先级分组",
+        "SKILL.md第三层：监控日历从周2次→周2+每日轻量+月复盘",
+        "SKILL.md第四层：隐藏机会搜索从6个关键词→6个搜索维度（榜单/地域/赛道/投资/社交/校友）",
+        "SKILL.md第六层：投递漏斗补充公司示例"
+      ]
+    },
+    {
+      "timestamp": "2026-05-30T00:00:00+08:00",
+      "type": "bugfix",
+      "description": "修复数据扩展后遗留的引用不一致——缺失的系统层文件和过时的公司数量",
+      "conversation_hint": "neat-freak扫描发现SKILL.md引用了2个不存在的文件和4处过时数字",
+      "changes": [
+        "新建 references/company-intelligence.md（公司情报库桩文件）",
+        "新建 references/campus-hiring-risk-library.md（校招风险库桩文件）",
+        "修复 README.md 中'40+公司库'→'150家10梯队'",
+        "修复 evals/evals.json 中2处'40+公司库'→'150家公司库（10梯队）'",
+        "修复 memory/user-self-develops-skills.md 中'40+家公司库'→'150家10梯队'"
+      ]
     }
   ],
   "lessons_learned": [
+    {
+      "id": "L017",
+      "scenario": "从外部数据源（Excel/文档）批量更新skill的结构化数据时",
+      "problem": "只更新了 data/profile.md 和 references/*.md 的数据层，但 SKILL.md 的引用描述、README、evals、memory 中过时的数字和引用未同步更新，导致信息碎片化",
+      "solution": "结构化数据（公司库/关键词库）的大版本更新后，必须执行全文件一致性检查：① data/ 数据层 → ② references/ 外置规则 → ③ SKILL.md 引用描述 → ④ README 公开说明 → ⑤ evals 测试断言 → ⑥ memory 外部记忆。六层任何一处不匹配都要修正。缺一层则下次 eval 或 memory 读取时会显示过时信息。",
+      "first_occurred": "2026-05-30",
+      "fixed_in_version": "3.0.0"
+    },
     {
       "id": "L001",
       "scenario": "搜索岗位信息时",
@@ -337,14 +373,6 @@
       "solution": "新增「公司招聘公众号」信源渠道：在微信中搜索该公司招聘公众号，从中获取最新官方校招网站的URL。公众号中发布的校招入口通常含实习/校招专有路径，比通用官网首页更精准",
       "first_occurred": "2026-05-24",
       "fixed_in_version": "1.11.0"
-    },
-    {
-      "id": "L002",
-      "scenario": "CDP访问安克创新飞书旧招聘站",
-      "problem": "飞书旧站anker-in.jobs.feishu.cn/189381/position/显示0岗位，浪费大量时间尝试CDP交互和搜索框筛选，实际原因是该旧站已停用，数据已迁移到新站career.anker-in.com的后端API",
-      "solution": "当SPA页面显示0岗位时，应立即执行逆向：1)提取页面JS资源中的API URL；2)下载主JS文件搜索getJobPosts等接口；3)直接调用API。同时创建站点经验文件记录已知API和参数，避免重复逆向。通用化为SPA零岗位逆向规则，写入所有求职skill。",
-      "first_occurred": "2026-05-24",
-      "fixed_in_version": "2.1.0"
     }
   ],
   "pending_improvements": [
@@ -380,10 +408,11 @@
     }
   ],
   "stats": {
-    "total_evolutions": 15,
-    "bugs_fixed": 5,
-    "features_added": 7,
+    "total_evolutions": 17,
+    "bugs_fixed": 6,
+    "features_added": 9,
     "optimizations": 3,
-    "lessons_recorded": 16
-  }
+    "lessons_recorded": 17
+  },
+  "last_updated": "2026-05-30T00:30:00+08:00"
 }

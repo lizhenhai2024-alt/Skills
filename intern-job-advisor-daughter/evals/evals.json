@@ -5,11 +5,11 @@
       "id": 1,
       "eval_name": "cross-border-ecommerce-search",
       "prompt": "帮我搜索2026年暑期跨境电商运营或DTC品牌相关的实习岗位，base广州或深圳。",
-      "expected_output": "应基于湖南大学英语专业学生画像，在40+公司库中匹配跨境电商/DTC/品牌出海方向，使用出海薪资基准评估，输出岗位排名和投递策略。",
+      "expected_output": "应基于湖南大学英语专业学生画像，在150家公司库（10梯队）中匹配跨境电商/DTC/品牌出海方向，使用出海薪资基准评估，输出岗位排名和投递策略。",
       "files": [],
       "assertions": [
         {"name": "user_profile_applied", "description": "应用了湖大英语专业学生画像"},
-        {"name": "company_library_used", "description": "使用了40+公司库匹配"},
+        {"name": "company_library_used", "description": "使用了150家公司库（10梯队）匹配"},
         {"name": "industry_salary_benchmark", "description": "使用出海行业薪资基准"},
         {"name": "actionable_plan", "description": "输出可执行的投递计划"}
       ]
