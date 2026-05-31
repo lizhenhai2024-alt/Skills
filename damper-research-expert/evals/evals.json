@@ -1,0 +1,46 @@
+{
+  "skill_name": "damper-research-expert",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "new-technology-assessment",
+      "prompt": "请分析磁流变(MRC)减振器技术在乘用车上的应用前景。从原理、结构、工艺、风险、工程适配性五个维度评价，并与CDC方案做对标。目标车型为中型SUV，行程80mm，低温要求-40℃。",
+      "expected_output": "应按五维评价模型展开：原理(磁流变效应)、结构(线圈+MR流体)、工艺(密封/沉降)、风险(沉降/功耗/成本)、工程适配性(低温流动性)。对标CDC应包含响应时间、控制精度、NVH、量产成本、可靠性风险。结论给出推荐方案及理由。",
+      "files": [],
+      "assertions": [
+        {"name": "five_dimension_evaluation", "description": "完整覆盖五维评价模型每个维度"},
+        {"name": "benchmark_comparison", "description": "MRC与CDC对标表格完整"},
+        {"name": "adaptability_check", "description": "针对SUV/80mm/-40℃项目参数做适配性判断"},
+        {"name": "recommendation_with_reasoning", "description": "推荐结论附带工程理由，非营销语言"},
+        {"name": "risk_awareness", "description": "明确列出MRC的沉降/功耗/低温风险"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "design-spec-generation",
+      "prompt": "请为某电动车平台的前减振器生成设计规范，目标FV曲线：复原0.3m/s时4500N，压缩0.3m/s时1200N。控制电流范围0~1.6A，工作温度-30℃~100℃。要求包含密封设计和DFMEA。",
+      "expected_output": "应按模块D的10章结构输出完整设计规范：范围→术语→设计输入→设计计算(流量/压降/Re)→结构设计(阀系/电磁阀/缸体)→材料工艺→密封设计→风险控制→DFMEA→DVP。FV曲线分析应推导到PQ和阀系参数。",
+      "files": [],
+      "assertions": [
+        {"name": "spec_structure_complete", "description": "覆盖模块D全部10章结构"},
+        {"name": "fv_to_pq_derivation", "description": "从目标FV曲线推导PQ和阀系设计参数"},
+        {"name": "seal_design_included", "description": "密封设计章节与温度范围(-30~100℃)联动"},
+        {"name": "dfmea_coverage", "description": "DFMEA覆盖卡滞/漂移/死区/饱和/噪音"},
+        {"name": "dvp_matching", "description": "DVP自动匹配阀系专用测试项(多电流FV/响应时间/迟滞)"}
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "technical-bulletin",
+      "prompt": "我看到一篇关于CDC减振器先导阀采用微锥面(7°)密封的论文，请快速评估这项技术的工程价值。",
+      "expected_output": "应按技术快报模板输出：技术名称、技术定义(1句话)、核心价值(解决了什么)、主要风险(≤3条)、工程结论(推荐/需验证/不推荐+理由)。微锥面应分析渐开特性优势vs密封难度+加工偏差敏感性。",
+      "files": [],
+      "assertions": [
+        {"name": "fast_format", "description": "使用技术快报模板，5字段完整"},
+        {"name": "pros_cons_balance", "description": "客观分析渐开特性(优)与密封/加工(劣)"},
+        {"name": "no_marketing_language", "description": "无营销语言，工程化表述"},
+        {"name": "actionable_conclusion", "description": "工程结论可直接用于决策(推荐/需验证/不推荐)"}
+      ]
+    }
+  ]
+}

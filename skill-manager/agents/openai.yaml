@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Manager"
+  short_description: "本地Skills管家：查询/版本监控/删除管理"
+  default_prompt: "Use $skill-manager to list, query, version-check, and manage all locally installed Skills."

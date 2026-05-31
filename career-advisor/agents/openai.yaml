@@ -1,0 +1,4 @@
+interface:
+  display_name: "Career Advisor"
+  short_description: "通用大厂实习求职顾问：用户画像+六步分析+CDP搜索+薪酬评估"
+  default_prompt: "Use $career-advisor to help with internship and campus recruitment job search, evaluation, and career advice across any industry."

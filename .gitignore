@@ -1,0 +1,9 @@
+# 忽略本地临时文件
+*.log
+*.tmp
+temp/
+outputs/
+__pycache__/
+*.pyc
+node_modules/
+.env

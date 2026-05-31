@@ -1,0 +1,30 @@
+{
+  "skill_name": "skill-evolution-manager",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "evolution-analysis",
+      "prompt": "今天使用patent-disclosure-skill时发现，Step 2的文档扫描在遇到加密PDF时会卡住，没有fallback机制。请分析并进化这个skill。",
+      "expected_output": "应记录教训到evolution.json，分析根因（缺少加密PDF检测和降级策略），生成改进方案（在Step 2增加文件类型预检和fallback路径），更新SKILL.md。",
+      "files": [],
+      "assertions": [
+        {"name": "lesson_recorded", "description": "教训已记录到evolution.json"},
+        {"name": "root_cause_analysis", "description": "分析了根因"},
+        {"name": "improvement_generated", "description": "生成了具体的改进方案"},
+        {"name": "skill_updated", "description": "SKILL.md已更新"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "cross-session-learning",
+      "prompt": "我注意到damper-failure-analysis最近3次使用中，有2次用户抱怨分析太慢、输出太长。请做进化分析。",
+      "expected_output": "应汇总3次使用的反馈，判断是否需要优化（如增加快速诊断模式），在evolution.json中记录，提出改进方案。",
+      "files": [],
+      "assertions": [
+        {"name": "feedback_aggregated", "description": "汇总了多次使用反馈"},
+        {"name": "pattern_identified", "description": "识别了重复问题模式"},
+        {"name": "evolution_proposal", "description": "提出了进化建议"}
+      ]
+    }
+  ]
+}

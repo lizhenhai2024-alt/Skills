@@ -1,0 +1,47 @@
+{
+  "skill_name": "damper-failure-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "oil-leakage-root-cause",
+      "prompt": "某乘用车前减振器在-20℃低温停放后出现静态漏油，油量损失约15mL。拆解发现油封唇口有轻微磨损痕迹，活塞杆表面Ra=0.08μm，密封圈材料为NBR(邵氏硬度72)。请按八步流程做失效分析，标注证据置信度。",
+      "expected_output": "应输出完整的八步分析：现象(低温静态漏油)→证据清点(油量/拆解/Ra/材料/温度)→功能路径(密封腔压力路径)→机理(低温NBR硬化→唇口接触力不足)→参数关联(g/Ra/温度)→根因分级(主因+次因+触发条件，附置信度)→改进(低温材料或增加唇口预紧)→DFMEA/DVP联动。结论应区分密封损伤/杆表面/导向套磨损/压力过载/污染/装配/材料兼容性。",
+      "files": [],
+      "assertions": [
+        {"name": "eight_step_complete", "description": "八步流程完整执行"},
+        {"name": "evidence_grading", "description": "根因包含置信度标注"},
+        {"name": "is_is_not_table", "description": "包含Is/Is Not边界界定"},
+        {"name": "low_temp_mechanism", "description": "正确分析低温NBR硬化机理"},
+        {"name": "leakage_differential_diagnosis", "description": "区分了7种漏油可能性(密封/杆表面/导向套/压力/污染/装配/材料)"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "cdc-dead-zone-failure",
+      "prompt": "CDC减振器在0.3~0.5A电流范围内阻尼力无变化，但电流>0.5A后正常响应。检查发现先导孔直径2.0mm，电磁阀线圈电阻正常(5.2Ω)，ECU指令正常。用户抱怨小振幅路面舒适性差。请做8D报告。",
+      "expected_output": "应按8D模板输出：D1团队→D2问题描述(Is/Is Not)→D3遏制→D4根因(功能路径+失效机理+根因分级，区分机械阀/电气/控制指令/液压/台架因素)→D5永久措施(减小先导孔至1.0~1.5mm)→D6验证→D7预防(DFMEA/DVP更新)→D8关闭条件。根因判定为先导孔2.0mm在边界值+电磁力不足以克服液压阻力。",
+      "files": [],
+      "assertions": [
+        {"name": "8d_structure_complete", "description": "D1~D8完整覆盖"},
+        {"name": "is_is_not_table", "description": "D2包含Is/Is Not边界表"},
+        {"name": "cdc_differential", "description": "区分了机械阀/电气/控制/液压/台架5种因素"},
+        {"name": "pilot_orifice_diagnosis", "description": "识别先导孔φ2.0mm为边界值根因"},
+        {"name": "dfmea_dvp_update", "description": "D7包含DFMEA和DVP更新项"}
+      ]
+    },
+    {
+      "id": 3,
+      "eval_name": "noise-diagnosis-insufficient-evidence",
+      "prompt": "客户投诉减振器在60~80km/h过减速带时有'咔嗒'异响，但没有拆解数据，只有一段手机录制的音频。",
+      "expected_output": "应识别证据严重不足，输出缺失证据清单(需拆解/噪声频谱/行程位置/OK件对比/扭矩检查)而非武断下结论。给出按置信度排列的假设列表和下一步验证方案。",
+      "files": [],
+      "assertions": [
+        {"name": "evidence_gap_identified", "description": "明确指出证据不足，而非强行给出结论"},
+        {"name": "missing_evidence_table", "description": "输出缺失证据清单(缺什么/为什么需要/如何获取)"},
+        {"name": "hypotheses_ranked", "description": "假设按置信度排列"},
+        {"name": "no_go_compliance", "description": "未违反No-go规则(未在排除安装/衬套/预紧/气油/气蚀/台架前归因阀系)"},
+        {"name": "verification_plan", "description": "给出下一步验证方案和判定标准"}
+      ]
+    }
+  ]
+}

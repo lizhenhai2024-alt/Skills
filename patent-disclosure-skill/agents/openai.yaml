@@ -1,0 +1,4 @@
+interface:
+  display_name: "Patent Disclosure Skill"
+  short_description: "中国专利交底书全流程生成：挖掘→查新→撰写→自检→迭代"
+  default_prompt: "Use $patent-disclosure-skill to generate a Chinese patent disclosure document from engineering project materials, with prior-art search and domain-specific templates."

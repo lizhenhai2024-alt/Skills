@@ -1,0 +1,30 @@
+{
+  "skill_name": "neat-freak",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "claude-md-reconciliation",
+      "prompt": "项目代码已经重构了auth模块，请同步更新CLAUDE.md和开发文档。",
+      "expected_output": "应扫描当前代码库状态，识别CLAUDE.md和文档中过时的auth模块描述，生成更新后的CLAUDE.md和文档，标注变更点。",
+      "files": [],
+      "assertions": [
+        {"name": "codebase_scanned", "description": "扫描了当前代码库状态"},
+        {"name": "stale_content_identified", "description": "识别了过时内容"},
+        {"name": "change_summary", "description": "标注了具体变更点"},
+        {"name": "consistency_check", "description": "CLAUDE.md/README/docs/内存一致性校验通过"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "end-of-session-cleanup",
+      "prompt": "今天做了很多改动，帮我做一次会话结束前的全面清理和同步。",
+      "expected_output": "应扫描所有变更，更新CLAUDE.md和文档，整理agent memory，清理临时文件，输出清理报告。",
+      "files": [],
+      "assertions": [
+        {"name": "changes_catalogued", "description": "所有变更已梳理"},
+        {"name": "docs_updated", "description": "相关文档已更新"},
+        {"name": "cleanup_report", "description": "输出了清理报告"}
+      ]
+    }
+  ]
+}

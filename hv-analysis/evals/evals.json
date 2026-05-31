@@ -1,0 +1,30 @@
+{
+  "skill_name": "hv-analysis",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "product-deep-research",
+      "prompt": "请对特斯拉Cybertruck做纵深研究分析，包括发展历程和竞品对比，输出PDF报告。",
+      "expected_output": "应包含纵向时间线（从发布到交付的关键节点）、横向对比（Rivian R1T/Ford F-150 Lightning/Hummer EV），输出格式化的PDF研究报告。",
+      "files": [],
+      "assertions": [
+        {"name": "vertical_timeline", "description": "包含完整的历史发展时间线"},
+        {"name": "horizontal_comparison", "description": "包含至少3个竞品对比"},
+        {"name": "pdf_output", "description": "输出PDF格式报告"},
+        {"name": "data_sourced", "description": "数据和结论有来源标注"}
+      ]
+    },
+    {
+      "id": 2,
+      "eval_name": "company-analysis",
+      "prompt": "分析比亚迪在东南亚市场的扩张策略，做纵深研究。",
+      "expected_output": "应包含纵向（进入时间/建厂/车型投放节奏）和横向（对比上汽/长城/哪吒的东南亚策略），给出竞争态势判断。",
+      "files": [],
+      "assertions": [
+        {"name": "timeline_complete", "description": "时间线覆盖关键事件节点"},
+        {"name": "competitor_coverage", "description": "竞品覆盖充分"},
+        {"name": "strategic_insight", "description": "有深度的策略判断而非表面总结"}
+      ]
+    }
+  ]
+}

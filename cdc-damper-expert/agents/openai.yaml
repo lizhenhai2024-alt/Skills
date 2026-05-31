@@ -1,0 +1,4 @@
+interface:
+  display_name: "CDC Damper Expert"
+  short_description: "CDC电控减振器阀系设计与PQ/FV特性分析"
+  default_prompt: "Use $cdc-damper-expert to analyze CDC damper valve design, PQ/FV characteristics, current response, and three-cylinder architecture."

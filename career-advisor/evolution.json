@@ -1,0 +1,112 @@
+{
+  "skill_name": "career-advisor",
+  "version": "2.1.0",
+  "last_evolved": "2026-05-24T16:12:44+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-05-23T23:50:00+08:00",
+      "type": "feature",
+      "description": "创建通用学生实习求职skill — 支持任意专业任意行业方向的岗位评估框架",
+      "conversation_hint": "用户要求新建一个通用学生实习和求职skill",
+      "changes": [
+        "创建career-advisor核心SKILL.md框架",
+        "用户画像对话构建模块（替代硬编码）",
+        "六步分析框架通用化改造",
+        "通用关键词系统（跨行业高价值+低价值）",
+        "动态薪酬评估（实时搜索替代预设表）",
+        "联网搜索策略动态化",
+        "创建 evolution.json"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T18:30:00+08:00",
+      "type": "feature",
+      "description": "搜索策略全面升级 + 关系描述修正 — 引入A/B公司分类、官网直达策略、校招季节感知",
+      "conversation_hint": "用户要求求职skill通用更新，与其他求职skill同步",
+      "changes": [
+        "新增A/B公司分类机制（A类自有官网为主 vs B类聚合平台可达）",
+        "新增CDP官网直达策略及通用大厂招聘域名参考表",
+        "新增校招季节感知模块",
+        "新增搜索频率控制规则",
+        "重写与intern-job-advisor/intern-job-advisor-daughter的关系描述（三个求职skill分工）",
+        "更新 evolution.json v1.1.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T01:00:00+08:00",
+      "type": "optimization",
+      "description": "新增输出自检体系 — 四层检查清单，确保评估质量一致",
+      "conversation_hint": "用户建议Skill应内置自检机制，同步至三个求职skill",
+      "changes": [
+        "新增「输出自检」章节（位于边界情况之后、关系说明之前）",
+        "自检四层：硬性规则扫描→评估一致性检查→内容质量检查→输出完整性检查",
+        "更新 evolution.json v1.2.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T04:00:00+08:00",
+      "type": "feature",
+      "description": "引入Career-Ops式数据契约、投递追踪、幽灵岗位检测和STAR+R故事库",
+      "conversation_hint": "用户要求按推荐借鉴Career-Ops求职架构执行",
+      "changes": [
+        "新增data/用户层与references/系统层分离，用户数据不随skill进化覆盖",
+        "新增投递追踪器data/applications.md，支持待投递、已投递、笔试/测评、面试中、已录用、已拒绝、疑似幽灵状态",
+        "新增STAR+R故事库data/story-bank.md，用于沉淀面试经历",
+        "新增references/ghost-job-signals.md，评估岗位真实性并标记疑似幽灵岗位",
+        "新增references/keyword-library.md，将关键词扫描规则外置",
+        "SKILL.md改为读取数据层文件，减少硬编码并支持后续迭代"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T16:12:44+08:00",
+      "type": "optimization",
+      "description": "安克创新招聘入口升级为API直达 + 新增SPA零岗位逆向规则",
+      "conversation_hint": "试运行发现飞书旧站0岗位，逆向新站API成功获取13个实习岗位",
+      "changes": [
+        "安克创新招聘入口从飞书旧站(feishu.cn/189381)改为API直达(open.anker-in.com/service/lark/openapi/getJobPosts/)",
+        "新增SPA零岗位逆向规则：当SPA页面显示0岗位时，逆向JS定位后端API接口直接调用",
+        "更新飞书招聘类型说明，安克从飞书代表公司中移除（旧站已停用）",
+        "更新自建站类型说明，安克标注为career.anker-in.com + API直达",
+        "创建web-access站点经验文件references/site-patterns/anker-in.com.md",
+        "修复daughter SKILL.md中六步→七步残留不一致"
+      ]
+    }
+  ],
+  "lessons_learned": [
+    {
+      "id": "L001",
+      "scenario": "首次构建通用求职skill时",
+      "problem": "intern-job-advisor高度定制化（英语专业+出海方向），其他专业/行业无法复用",
+      "solution": "设计动态画像构建+实时搜索薪酬+通用关键词的架构，支持任意专业和行业方向。与垂直skill互补而非替代。",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.0.0"
+    }
+  ],
+  "pending_improvements": [
+    {
+      "idea": "增加offer对比功能（给offer信息后自动输出对比表）",
+      "priority": "medium",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "支持批量评估（用户一次贴多个JD）",
+      "priority": "medium",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "简历-岗位匹配度分析（用户上传简历后扫描关键词匹配度）",
+      "priority": "low",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    }
+  ],
+  "stats": {
+    "total_evolutions": 5,
+    "bugs_fixed": 0,
+    "features_added": 3,
+    "optimizations": 2,
+    "lessons_recorded": 1
+  }
+}

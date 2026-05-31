@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-05-24",
+  "lessons_learned": [],
+  "pending_improvements": [
+    "增加自动识别更多目标公司名",
+    "增加简历版本对比功能",
+    "增加投递状态自动提醒"
+  ],
+  "evolution_history": [
+    {
+      "level": "L001",
+      "date": "2026-05-24",
+      "trigger": "initial_creation",
+      "changes": "从pims-organize fork，替换为大学生求职场景分类体系(01-07分类)，内置40+目标公司识别列表和简历版本管理规则",
+      "outcome": "success"
+    }
+  ]
+}

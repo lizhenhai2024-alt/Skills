@@ -1,0 +1,418 @@
+{
+  "skill_name": "intern-job-advisor-daughter",
+  "version": "3.0.0",
+  "last_evolved": "2026-05-30T00:00:00+08:00",
+  "evolution_history": [
+    {
+      "timestamp": "2026-05-23T14:00:00+08:00",
+      "type": "feature",
+      "description": "初始化进化档案 + 增加CDP浏览器搜索 + 优化描述",
+      "conversation_hint": "首次安装与优化",
+      "changes": [
+        "增加CDP浏览器第二层搜索策略",
+        "优化description覆盖更多触发场景",
+        "增加Skill维护建议章节",
+        "创建 evolution.json"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T22:00:00+08:00",
+      "type": "feature",
+      "description": "增加拓展方向推荐系统 — AI国际化/游戏出海/短剧网文出海/KOL营销/AI数据运营",
+      "conversation_hint": "用户问匹配专业除电商外的其他发展方向",
+      "changes": [
+        "增加「拓展方向推荐」章节，覆盖5个高成长赛道",
+        "每个赛道包含：薪资天花板、英语适配度、代表公司、能力要求、职业路径",
+        "增加赛道间横向对比和优先排序",
+        "更新 evolution.json v1.1.0",
+        "更新SKILL.md进化记录"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T23:00:00+08:00",
+      "type": "feature",
+      "description": "大幅扩展目标公司列表 — 从3类13家扩至4类40+家",
+      "conversation_hint": "用户要求电商方向检索的公司范围扩大",
+      "changes": [
+        "新增平台类公司：Shopee、Lazada、速卖通、亚马逊",
+        "新增品牌出海公司：致欧科技、绿联、倍思、傲雷、拓竹科技、传音控股",
+        "新增互联网出海公司：快手国际、昆仑万维",
+        "新增国际化消费品牌：联想、比亚迪、海尔",
+        "新增第四类「新锐出海品牌」：图拉斯、曜曜集团、RENOGY等8家",
+        "评分标准增加第四类说明（关注但不加分）",
+        "搜索策略增加5-6条（新锐品牌方向、平台运营方向）",
+        "更新进化记录"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T23:30:00+08:00",
+      "type": "optimization",
+      "description": "公司质量审查 — 移除昆仑万维和棒谷科技，加入小米国际和美的海外",
+      "conversation_hint": "用户要求清理负面公司 + 建议加入小米美的",
+      "changes": [
+        "移除昆仑万维（连续亏损，AI故事难兑现）",
+        "移除棒谷科技（团队缩编80%，库存爆雷）",
+        "更新所有引用措辞，移除上述公司示例",
+        "加入小米国际、美的海外至第四类国际化消费品牌"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T23:45:00+08:00",
+      "type": "feature",
+      "description": "增加毕业薪酬参考与发展前景分析框架 — 薪酬基准表+九维评估新增薪酬展望维度+评分标准增加薪资天花板加分",
+      "conversation_hint": "用户要求从毕业薪酬和发展前景评估岗位",
+      "changes": [
+        "新增「薪酬参考与毕业发展前景」章节，含8个方向的薪资基准表",
+        "九维评估新增「毕业薪酬展望」维度（A/B/C/D等级）",
+        "评分标准新增高薪资天花板方向加分项",
+        "综合判断新增「薪资天花板最高」「薪资成长曲线最优」两项",
+        "第六步新增毕业薪酬与发展前景分析子项",
+        "分析原则新增3条薪酬/成长相关性原则",
+        "更新evolution.json v1.4.0",
+        "更新SKILL.md进化记录"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T23:58:00+08:00",
+      "type": "feature",
+      "description": "增加MD报告和PDF报告输出能力",
+      "conversation_hint": "用户要求skill增加输出MD报告和PDF报告",
+      "changes": [
+        "新增「报告输出」章节（位于搜索频率之后、边界情况之前）",
+        "MD报告：评估完成后自动写入 outputs/ 目录",
+        "PDF报告：提供浏览器打印和WeasyPrint两种方案",
+        "更新evolution.json v1.5.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T16:00:00+08:00",
+      "type": "bugfix",
+      "description": "补充目标公司列表 + 新增小米/美的直达官网指引",
+      "conversation_hint": "用户指出缺少小米国际和美的海外+问为什么没搜到",
+      "changes": [
+        "补全v1.2.0/v1.3.0丢失的公司条目：Shopee/Lazada/Amazon等平台、致欧/绿联等品牌出海、联想/比亚迪/海尔、小米国际/美的海外、新锐出海品牌",
+        "CDP浏览器部分新增9家目标公司官方招聘官网直达链接",
+        "增加说明：小米/美的等大厂以自有官网为主，聚合平台信息不全",
+        "更新evolution.json v1.5.1"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T17:30:00+08:00",
+      "type": "feature",
+      "description": "出海公司全面优化 — 新增消费电子出海大类+大厂出海独立分类+新增8家公司",
+      "conversation_hint": "用户要求继续优化出海公司，特别是大厂和消费电子公司",
+      "changes": [
+        "新增「消费电子出海」大类（手机/OEM+智能硬件+智能家居/家电子类）",
+        "新增「大厂出海」独立分类，突出字节/TikTok/阿里/腾讯/百度/快手/小红书",
+        "剥离SHEIN/TEMU至跨境电商平台类",
+        "新增8家消费电子公司：荣耀、一加、真我Realme、韶音科技Shokz、TCL、海信、百度国际、快手国际",
+        "更新A/B公司分类表，新增A类（华为/OPPO/vivo/荣耀/大疆/百度/快手等）",
+        "更新官网直达链接表，新增12家公司招聘官网入口",
+        "更新搜索维度（消费电子出海方向+大厂出海方向）",
+        "更新evolution.json v1.6.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-23T23:59:00+08:00",
+      "type": "bugfix",
+      "description": "修复多关键词搜索覆盖不足的问题 — 扩大关键词范围+增加历史结果比对+增加质量检查清单",
+      "conversation_hint": "用户指出漏了华为消费者管理培训生，要求分析原因并改进",
+      "changes": [
+        "官网搜索关键词从仅「海外」「运营」扩至全品类：运营类/管培类/市场类/销售类/品牌类",
+        "增加历史结果比对步骤，防止遗漏上一轮已发现的岗位",
+        "增加质量检查清单（每家公司至少3组关键词、覆盖5种命名类别、交叉比对、CDP验证）",
+        "增加搜索教训说明，防止同类问题再次发生",
+        "更新evolution.json v1.7.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T00:30:00+08:00",
+      "type": "bugfix",
+      "description": "面试难度评估标准修正+新增多岗位投递策略+入职策略",
+      "conversation_hint": "用户反馈Anker投了3个岗位只收到1个面试，分析面试难度判断偏差",
+      "changes": [
+        "面试难度标准增加「岗位稀缺度/编制量」维度——GTM/策略/管培类岗位即使JD要求看似中等，编制极少导致实际竞争为「高」",
+        "新增「多岗位投递策略」章节（同一家公司多岗位投递的分析框架：命中率预判/筛选项/入职后转岗空间）",
+        "第六步新增「入职策略（先易后难）」——优先准备拿到面试的岗位，先进去再转岗",
+        "分析原则新增2条：面试难度≠JD字面要求；先入职再转岗是可行策略",
+        "更新evolution.json v1.8.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T00:30:00+08:00",
+      "type": "bugfix",
+      "description": "搜索策略全面重构——废除AB公司分类，CDP优先+WebSearch降级为仅辅助",
+      "conversation_hint": "用户反馈检索结果偏少，Anker只有1个岗位",
+      "changes": [
+        "废除AB公司分类策略，所有公司统一CDP优先",
+        "WebSearch降级：仅用于找官网URL、薪资基准、面试经验",
+        "新增飞书招聘SPA页面说明和操作策略",
+        "质量检查清单从关键词数量导向改为CDP验证导向",
+        "新增原则：CDP直达招聘官网是第一优先，WebSearch不能替代CDP",
+        "更新安克创新招聘入口为飞书页面",
+        "更新evolution.json v1.9.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T01:00:00+08:00",
+      "type": "optimization",
+      "description": "新增输出自检体系——四层检查清单，确保评估质量一致",
+      "conversation_hint": "用户建议Skill应内置自检机制",
+      "changes": [
+        "新增「输出自检」章节（位于报告输出之后、边界情况之前）",
+        "自检四层：硬性规则扫描→评估一致性检查→内容质量检查→输出完整性检查",
+        "质量检查清单更新：去除A类公司引用，增加CDP验证、去重、实习周期标注项",
+        "更新evolution.json v1.10.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T03:00:00+08:00",
+      "type": "bugfix",
+      "description": "补充SPA搜索盲区兜底+小米招聘入口更新+双重招聘系统感知+信源渠道扩展",
+      "conversation_hint": "用户发现安克双重招聘系统和小米Mioffice招聘页",
+      "changes": [
+        "更新小米招聘URL：hr.xiaomi.com/campus → xiaomi.jobs.f.mioffice.cn/internship",
+        "新增Mioffice类型至ATS类型表",
+        "新增「搜索盲区补漏」机制：SPA页面分类筛选可能遗漏岗位，必须用关键词搜索URL兜底",
+        "新增「通过公司招聘公众号发现官方求职入口」渠道",
+        "新增「双重招聘系统」说明（如安克同时有飞书旧站和自建新站）",
+        "移除重复的SPA说明段落",
+        "更新evolution.json v1.11.0"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T04:00:00+08:00",
+      "type": "feature",
+      "description": "引入Career-Ops式数据契约、投递追踪、幽灵岗位检测和STAR+R故事库",
+      "conversation_hint": "用户要求按推荐借鉴Career-Ops求职架构执行",
+      "changes": [
+        "新增data/用户层与references/系统层分离，用户数据不随skill进化覆盖",
+        "新增投递追踪器data/applications.md，支持待投递、已投递、笔试/测评、面试中、已录用、已拒绝、疑似幽灵状态",
+        "新增STAR+R故事库data/story-bank.md，用于沉淀面试经历",
+        "新增references/ghost-job-signals.md，评估岗位真实性并标记疑似幽灵岗位",
+        "新增references/keyword-library.md，将关键词扫描规则外置",
+        "SKILL.md改为读取数据层文件，减少硬编码并支持后续迭代"
+      ]
+    },
+    {
+      "timestamp": "2026-05-24T16:12:44+08:00",
+      "type": "optimization",
+      "description": "安克创新招聘入口升级为API直达 + 新增SPA零岗位逆向规则",
+      "conversation_hint": "试运行发现飞书旧站0岗位，逆向新站API成功获取13个实习岗位",
+      "changes": [
+        "安克创新招聘入口从飞书旧站(feishu.cn/189381)改为API直达(open.anker-in.com/service/lark/openapi/getJobPosts/)",
+        "新增SPA零岗位逆向规则：当SPA页面显示0岗位时，逆向JS定位后端API接口直接调用",
+        "更新飞书招聘类型说明，安克从飞书代表公司中移除（旧站已停用）",
+        "更新自建站类型说明，安克标注为career.anker-in.com + API直达",
+        "创建web-access站点经验文件references/site-patterns/anker-in.com.md",
+        "修复daughter SKILL.md中六步→七步残留不一致"
+      ]
+    },
+    {
+      "timestamp": "2026-05-30T00:00:00+08:00",
+      "type": "feature",
+      "description": "公司库从~40家升级为~150家10梯队 S/A/B/C 优先级体系 + 关键词库从2类升级为12方向搜索系统",
+      "conversation_hint": "用户提供完整Excel（目标公司库146行+岗位关键词库57行+评分体系+监控日历+搜索策略），要求同步到skill",
+      "changes": [
+        "data/profile.md: 公司库从简单分类(~50家)升级为10梯队S/A/B/C四级(~150家)，含消费电子出海/跨境电商平台/互联网国际化/品牌新消费/跨境服务/新能源/游戏出海/SaaS/外企等",
+        "references/keyword-library.md: 从高/低价值2类升级为12方向搜索系统（海外运营/海外营销/品牌/用户增长/海外BD/内容本地化/产品运营/数据分析/客户支持/供应链/财务合规），含S/A/B优先级",
+        "SKILL.md第一层：目标公司库更新为10梯队覆盖表（含每轮覆盖比例）",
+        "SKILL.md第二层：岗位关键词库从5方向扩至12方向+优先级分组",
+        "SKILL.md第三层：监控日历从周2次→周2+每日轻量+月复盘",
+        "SKILL.md第四层：隐藏机会搜索从6个关键词→6个搜索维度（榜单/地域/赛道/投资/社交/校友）",
+        "SKILL.md第六层：投递漏斗补充公司示例"
+      ]
+    },
+    {
+      "timestamp": "2026-05-30T00:00:00+08:00",
+      "type": "bugfix",
+      "description": "修复数据扩展后遗留的引用不一致——缺失的系统层文件和过时的公司数量",
+      "conversation_hint": "neat-freak扫描发现SKILL.md引用了2个不存在的文件和4处过时数字",
+      "changes": [
+        "新建 references/company-intelligence.md（公司情报库桩文件）",
+        "新建 references/campus-hiring-risk-library.md（校招风险库桩文件）",
+        "修复 README.md 中'40+公司库'→'150家10梯队'",
+        "修复 evals/evals.json 中2处'40+公司库'→'150家公司库（10梯队）'",
+        "修复 memory/user-self-develops-skills.md 中'40+家公司库'→'150家10梯队'"
+      ]
+    }
+  ],
+  "lessons_learned": [
+    {
+      "id": "L017",
+      "scenario": "从外部数据源（Excel/文档）批量更新skill的结构化数据时",
+      "problem": "只更新了 data/profile.md 和 references/*.md 的数据层，但 SKILL.md 的引用描述、README、evals、memory 中过时的数字和引用未同步更新，导致信息碎片化",
+      "solution": "结构化数据（公司库/关键词库）的大版本更新后，必须执行全文件一致性检查：① data/ 数据层 → ② references/ 外置规则 → ③ SKILL.md 引用描述 → ④ README 公开说明 → ⑤ evals 测试断言 → ⑥ memory 外部记忆。六层任何一处不匹配都要修正。缺一层则下次 eval 或 memory 读取时会显示过时信息。",
+      "first_occurred": "2026-05-30",
+      "fixed_in_version": "3.0.0"
+    },
+    {
+      "id": "L001",
+      "scenario": "搜索岗位信息时",
+      "problem": "仅依赖WebSearch获取岗位信息，摘要信息密度低，无法获取完整JD",
+      "solution": "增加CDP浏览器第二层搜索，直达招聘平台和公司官网获取完整JD",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.0.0"
+    },
+    {
+      "id": "L002",
+      "scenario": "用户询问除电商外其他发展方向时",
+      "problem": "Skill仅有电商/DTC/品牌出海方向的评估体系，无法回应用户对多元化职业路径的咨询需求",
+      "solution": "增加「拓展方向推荐」章节，内置AI国际化、游戏出海、短剧网文出海、KOL营销、AI数据运营五大方向的完整评估框架",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.1.0"
+    },
+    {
+      "id": "L003",
+      "scenario": "用户要求扩大电商方向检索公司范围时",
+      "problem": "目标公司列表仅覆盖3类13家，无法覆盖跨境电商/品牌出海领域快速增长的众多公司和平台",
+      "solution": "扩展至4类40+家，新增Shopee/Lazada/速卖通等平台、致欧/绿联/倍思等品牌出海、联想/比亚迪等国际化消费品牌，以及新锐出海品牌关注列表",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.2.0"
+    },
+    {
+      "id": "L004",
+      "scenario": "用户要求清理负面/经营不善的公司时",
+      "problem": "v1.2.0新增的公司中部分存在严重经营问题——昆仑万维连续亏损AI故事难变现、棒谷科技团队缩编80%生存堪忧，不适合推荐给求职者",
+      "solution": "移除昆仑万维和棒谷科技，更新所有引用措辞。建立目标公司质检标准：营收利润质量>规模、负面舆情审查、季报跟踪机制",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.3.0"
+    },
+    {
+      "id": "L005",
+      "scenario": "用户要求从毕业薪酬和发展前景评估岗位时",
+      "problem": "评估框架缺乏薪酬基准和发展前景判断，无法回答「哪个岗位未来更赚钱」「成长曲线如何」等核心问题",
+      "solution": "增加薪酬参考章节（8个方向的薪资基准表+薪资天花板排名+薪资-成长选择矩阵+发展前景5维评估法），九维评估新增毕业薪酬展望维度，评分标准加入薪资天花板加分项",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.4.0"
+    },
+    {
+      "id": "L006",
+      "scenario": "重构skill目录（重命名/搬迁）后",
+      "problem": "evolution.json记录了公司列表扩展（v1.2.0新增平台类、品牌出海、新锐品牌等），但SKILL.md的实际内容在目录重构时丢失，导致目标公司列表回到基础版本",
+      "solution": "每次目录操作（重命名/搬迁/复制）后，必须对比evolution.json的历史变更记录与SKILL.md实际内容是否一致，确保所有已记录的变更真实体现在SKILL.md中",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.5.1"
+    },
+    {
+      "id": "L007",
+      "scenario": "按岗位方向搜索目标公司时",
+      "problem": "对一家目标公司仅搜索单一关键词（如「海外运营」），导致命名体系不同的岗位（如「消费者管理培训生」「GTM实习生」）被完全遗漏",
+      "solution": "每家公司必须使用至少3-5组不同关键词交叉搜索，覆盖运营类、管培类、市场类、销售类、品牌类五种命名类别。A类公司必须通过CDP直达官网逐类别浏览，不能仅依赖站内搜索框",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.7.0"
+    },
+    {
+      "id": "L008",
+      "scenario": "多轮搜索的迭代过程中",
+      "problem": "新轮次搜索覆盖了新的关键词和公司，但没有与上一轮的结果进行交叉比对，导致上一轮已发现的岗位在新报告中遗漏",
+      "solution": "每轮搜索结果必须与上一轮做交叉比对，确保历史已发现的岗位不会在新轮次中被遗忘。在搜索结果处理步骤中增加历史结果比对环节",
+      "first_occurred": "2026-05-23",
+      "fixed_in_version": "1.7.0"
+    },
+    {
+      "id": "L009",
+      "scenario": "评估岗位面试难度时",
+      "problem": "面试难度判断仅看JD字面要求（如「有投放经验」「会SQL」「有独立站操盘经验」归为「中」），忽略了岗位编制量和竞争激烈程度，导致GTM/策略等稀缺岗位被低估面试难度",
+      "solution": "面试难度必须综合JD要求+岗位稀缺度判断。GTM/策略/管培岗编制极少（往往只招1-2人），即使JD要求看似中等，实际竞争为「高」",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.8.0"
+    },
+    {
+      "id": "L010",
+      "scenario": "用户同一家公司投多个岗位时",
+      "problem": "评估框架仅对每个岗位独立分析，缺少同一公司多岗位的横向对比和投递策略建议——用户不知道哪个岗位命中率更高、先进去再转岗的策略",
+      "solution": "增加「多岗位投递策略」分析框架，包含命中率预判、投递优先级、筛选项差异分析、入职后转岗空间。核心原则：进来比什么都重要，内部转岗比外部重新投递容易得多",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.8.0"
+    },
+    {
+      "id": "L011",
+      "scenario": "用WebSearch搜索目标公司岗位时",
+      "problem": "AB公司分类策略失效——B类公司用WebSearch先扫的策略无法获取真实岗位数据，安克240个岗位在WebSearch中几乎不可见",
+      "solution": "废除AB分类，所有公司统一CDP优先。WebSearch仅用于找官网URL、薪资基准、面试经验，不能替代CDP获取岗位数据",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.9.0"
+    },
+    {
+      "id": "L012",
+      "scenario": "访问飞书招聘页面时",
+      "problem": "飞书招聘页面是SPA应用，岗位列表通过JavaScript动态加载，WebSearch完全无法爬取；CDP打开后分页点击可能不触发React状态更新",
+      "solution": "飞书页面必须CDP直达。优先用页面内搜索框缩小范围。分页无效时记录可见页面的所有岗位名，标注页数限制",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.9.0"
+    },
+    {
+      "id": "L013",
+      "scenario": "完成评估报告输出后",
+      "problem": "各岗位的评估标准可能不一致（如同样7分有的推荐、有的保底），薪资数据可能无来源，面试建议可能偏通用模板",
+      "solution": "报告输出后必须执行四层自检：硬性规则扫描→评估一致性检查→内容质量检查→输出完整性检查",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.10.0"
+    },
+    {
+      "id": "L014",
+      "scenario": "在飞书/Mioffice SPA招聘页搜索岗位时",
+      "problem": "分类筛选（如「运营类」）可能不展示所有符合条件的岗位，部分岗位因分类标签不一致被遗漏——小米的「国际电商平台运营实习生」在运营类筛选下不可见，但用关键词搜索URL能找到",
+      "solution": "新增「搜索盲区补漏」机制：在用分类筛选查看后，必须在搜索框中输入核心关键词独立搜索。如果搜索框对中文字符响应不稳定，尝试在URL后添加「?keywords=」参数直接导航",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.11.0"
+    },
+    {
+      "id": "L015",
+      "scenario": "发现安克创新有新招聘系统时",
+      "problem": "安克同时运行两套招聘系统（飞书旧站+career.anker-in.com自建新站），只访问旧站会导致部分岗位遗漏",
+      "solution": "新增「双重招聘系统」感知：当一套系统中岗位有限时，应查找该公司是否有另一套招聘系统。对安克同时访问飞书旧站和career.anker-in.com",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.11.0"
+    },
+    {
+      "id": "L016",
+      "scenario": "寻找大厂校园招聘入口时",
+      "problem": "通用搜索引擎搜到的校招官网URL可能不是最新入口（如小米hr.xiaomi.com已非实际使用站点，实际校招在xiaomi.jobs.f.mioffice.cn/internship）",
+      "solution": "新增「公司招聘公众号」信源渠道：在微信中搜索该公司招聘公众号，从中获取最新官方校招网站的URL。公众号中发布的校招入口通常含实习/校招专有路径，比通用官网首页更精准",
+      "first_occurred": "2026-05-24",
+      "fixed_in_version": "1.11.0"
+    }
+  ],
+  "pending_improvements": [
+    {
+      "idea": "在搜索盲区补漏中增加多语言关键词搜索策略（如英语/拼音关键词）",
+      "priority": "medium",
+      "suggested_by": "实战经验",
+      "noted_at": "2026-05-24"
+    },
+    {
+      "idea": "创建 references/ 目录，外置面试题库、公司档案、薪资参考",
+      "priority": "medium",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "增加用户画像配置化，支持动态切换不同求职者背景",
+      "priority": "low",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "建立目标公司季度体检机制，自动输出基本面分析报告",
+      "priority": "medium",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    },
+    {
+      "idea": "薪酬基准数据每半年更新一次，跟踪出海赛道薪资变化趋势",
+      "priority": "low",
+      "suggested_by": "系统分析",
+      "noted_at": "2026-05-23"
+    }
+  ],
+  "stats": {
+    "total_evolutions": 17,
+    "bugs_fixed": 6,
+    "features_added": 9,
+    "optimizations": 3,
+    "lessons_recorded": 17
+  },
+  "last_updated": "2026-05-30T00:30:00+08:00"
+}

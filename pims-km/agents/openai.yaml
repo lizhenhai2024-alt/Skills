@@ -1,0 +1,4 @@
+interface:
+  display_name: "PIMS KM"
+  short_description: "PIMS v3.1 知识管理：文件归档/双链构建/知识蒸馏/SOP维护"
+  default_prompt: "Use $pims-km to archive files, build bidirectional links, distill engineering knowledge, and maintain SOPs in the PIMS v3.1 framework."

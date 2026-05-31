@@ -1,0 +1,4 @@
+interface:
+  display_name: "Damper Research Expert"
+  short_description: "减振器新技术研究与设计规范生成"
+  default_prompt: "Use $damper-research-expert to research damper technologies, generate design specifications, benchmark analysis, DFMEA, and DVP plans."
