@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>实习岗位评估报告</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f5f7fa;color:#1e293b;line-height:1.6;padding:16px}
+.header{background:linear-gradient(135deg,#2563eb,#7c3aed);color:#fff;padding:24px 20px;border-radius:16px;margin-bottom:20px}
+.header h1{font-size:20px;margin-bottom:8px}
+.header .meta{font-size:13px;opacity:.85}
+.summary-table{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow-x:auto}
+.summary-table h2{font-size:16px;margin-bottom:12px;color:#2563eb}
+.summary-table table{width:100%;border-collapse:collapse;font-size:13px;min-width:600px}
+.summary-table th{background:#f8fafc;padding:8px 10px;text-align:left;font-weight:600;border-bottom:2px solid #e2e8f0;white-space:nowrap}
+.summary-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9}
+.badge{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:700}
+.badge-green{background:#f0fdf4;color:#16a34a}
+.badge-blue{background:#eff6ff;color:#2563eb}
+.badge-yellow{background:#fefce8;color:#ca8a04}
+.badge-red{background:#fef2f2;color:#dc2626}
+.score{font-weight:700;font-size:14px}
+.score-9{color:#16a34a}
+.score-8{color:#2563eb}
+.score-7{color:#ca8a04}
+.score-6{color:#b45309}
+.card{background:#fff;border-radius:12px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.08);overflow:hidden}
+.card-header{padding:14px 16px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #f1f5f9}
+.card-header h3{font-size:15px;flex:1}
+.card-header .arrow{font-size:12px;color:#94a3b8;transition:transform .2s}
+.card.open .arrow{transform:rotate(180deg)}
+.card-body{display:none;padding:16px}
+.card.open .card-body{display:block}
+.card-body table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px}
+.card-body th{text-align:left;padding:6px 8px;background:#f8fafc;font-weight:500;border-bottom:1px solid #e2e8f0}
+.card-body td{padding:6px 8px;border-bottom:1px solid #f1f5f9}
+.highlight{padding:10px 14px;border-radius:8px;margin:8px 0;font-size:13px}
+.highlight-green{background:#f0fdf4;border-left:4px solid #22c55e}
+.highlight-red{background:#fef2f2;border-left:4px solid #ef4444}
+.highlight-blue{background:#eff6ff;border-left:4px solid #2563eb}
+.tag{display:inline-block;background:#f1f5f9;color:#475569;padding:2px 8px;border-radius:8px;font-size:12px;margin:2px}
+.section{background:#fff;border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.section h2{font-size:16px;margin-bottom:12px;color:#1e293b}
+.section table{width:100%;border-collapse:collapse;font-size:13px}
+.section th{text-align:left;padding:8px 10px;background:#f8fafc;font-weight:600;border-bottom:2px solid #e2e8f0}
+.section td{padding:8px 10px;border-bottom:1px solid #f1f5f9}
+.rank-section{padding:12px 16px;border-radius:8px;margin:8px 0}
+.rank-strong{background:#f0fdf4;border-left:4px solid #22c55e}
+.rank-rec{background:#eff6ff;border-left:4px solid #2563eb}
+.rank-safe{background:#fefce8;border-left:4px solid #eab308}
+.interview-card{background:#f8fafc;border-radius:8px;padding:12px 14px;margin:8px 0;font-size:13px}
+.interview-card h4{font-size:14px;margin-bottom:6px;color:#2563eb}
+.new-tag{display:inline-block;background:#22c55e;color:#fff;padding:1px 6px;border-radius:6px;font-size:10px;font-weight:700;margin-left:4px;vertical-align:middle}
+@media(max-width:480px){body{padding:8px}.header h1{font-size:17px}.summary-table table{font-size:11px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>📋 实习岗位评估报告</h1>
+<div class="meta">生成时间：2026-05-27 | 画像：湖南大学英语专业 | 方向：跨境电商/DTC/品牌出海</div>
+</div>
+
+<div class="section">
+<h2>💰 薪资基准</h2>
+<table>
+<tr><th>公司</th><th>实习生日薪</th><th>福利亮点</th><th>来源</th></tr>
+<tr><td>安克创新</td><td><strong>150-250元/天</strong></td><td>免费早晚餐+午餐约8元；月2次带薪短假；转正直通校招</td><td>BOSS直聘/职友集/LinkedIn</td></tr>
+<tr><td>SHEIN</td><td><strong>150-320元/天</strong></td><td>每年2次调薪；管培生包住+班车；全球20+办公地外派</td><td>BOSS直聘/Glassdoor/牛客</td></tr>
+</table>
+<p style="font-size:12px;color:#94a3b8">行业参考：深圳/广州跨境电商运营岗实习日薪一般水平 150-200元/天</p>
+</div>
+
+<div class="summary-table">
+<h2>岗位搜索结果（共10个适配岗位）</h2>
+<table>
+<tr><th>#</th><th>岗位</th><th>公司</th><th>地点</th><th>适配度</th><th>推荐</th></tr>
+<tr><td>1</td><td>欧洲 GTM实习</td><td>安克创新</td><td>深圳+长沙</td><td class="score score-9">9/10</td><td><span class="badge badge-green">强烈推荐</span></td></tr>
+<tr><td>2</td><td>独立站运营(Charging)</td><td>安克创新</td><td>深圳</td><td class="score score-9">9/10</td><td><span class="badge badge-green">强烈推荐</span></td></tr>
+<tr><td>3</td><td>欧洲品牌经理实习</td><td>安克创新</td><td>深圳</td><td class="score score-8">8/10</td><td><span class="badge badge-green">强烈推荐</span></td></tr>
+<tr><td>4</td><td>TikTok直播运营(北美)<span class="new-tag">NEW</span></td><td>安克创新</td><td>西雅图</td><td class="score score-8">8/10</td><td><span class="badge badge-green">强烈推荐</span></td></tr>
+<tr><td>5</td><td>欧洲电商实习生</td><td>安克创新</td><td>深圳</td><td class="score score-7">7/10</td><td><span class="badge badge-blue">推荐</span></td></tr>
+<tr><td>6</td><td>海外推广运营</td><td>安克创新</td><td>长沙</td><td class="score score-7">7/10</td><td><span class="badge badge-blue">推荐</span></td></tr>
+<tr><td>7</td><td>ANZ DTC 实习生</td><td>安克创新</td><td>长沙</td><td class="score score-7">7/10</td><td><span class="badge badge-blue">推荐</span></td></tr>
+<tr><td>8</td><td>ANZ GTM 实习生</td><td>安克创新</td><td>长沙</td><td class="score score-7">7/10</td><td><span class="badge badge-blue">推荐</span></td></tr>
+<tr><td>9</td><td>红人营销实习生</td><td>SHEIN</td><td>广州</td><td class="score score-7">7/10</td><td><span class="badge badge-blue">推荐</span></td></tr>
+<tr><td>10</td><td>产品测试(消费者洞察)</td><td>SHEIN</td><td>上海</td><td class="score score-6">6/10</td><td><span class="badge badge-yellow">保底</span></td></tr>
+</table>
+</div>
+
+<!-- 岗位1 -->
+<div class="card open">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>1. 欧洲 GTM实习 @ 安克创新 <span class="badge badge-green">适配度 9/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table>
+<tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td><span style="color:#16a34a">高</span></td></tr>
+<tr><td>值得投递</td><td><span style="color:#16a34a">是 — 方向完全匹配，GTM是消费电子出海核心岗</span></td></tr>
+<tr><td>学到核心能力</td><td><span style="color:#16a34a">是 — GTM策略、定价、NPI、竞品分析、跨职能协作</span></td></tr>
+<tr><td>适合英语专业</td><td><span style="color:#16a34a">加分项 — 欧洲多国市场，英语是工作语言</span></td></tr>
+<tr><td>适合女生长期发展</td><td><span style="color:#2563eb">看情况 — GTM路径天花板高，需持续学习数据/策略</span></td></tr>
+<tr><td>加班强度</td><td><span style="color:#ca8a04">中 [无公开数据，基于行业惯例判断]</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#dc2626">高 — 编制极少，竞争激烈</span></td></tr>
+<tr><td>转正概率</td><td><span style="color:#16a34a">高 — JD明确写转正机会</span></td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• GTM策略：直接参与产品发布、定价、促销，对业务结果有影响力<br>• 跨职能协作：与销售、营销、产品管理、零售合作伙伴协作<br>• 市场洞察+竞品分析：JD明确要求<br>• 英语壁垒：面向欧洲多国市场<br>• 客户映射：高价值BD技能</div>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• 编制极少，面试竞争激烈<br>• 部分职责含"协助""支持"（约40%）<br>• 需在长沙/深圳base，驻欧需额外争取</div>
+<p><strong>投递建议：</strong><span class="badge badge-green">强烈推荐</span> | 大厂跳板：极高 | 校招帮助：极高</p>
+</div>
+</div>
+
+<!-- 岗位2 -->
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>2. 独立站运营(Charging) @ 安克创新 <span class="badge badge-green">适配度 9/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table>
+<tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td><span style="color:#16a34a">高</span></td></tr>
+<tr><td>值得投递</td><td><span style="color:#16a34a">是 — DTC独立站运营，接触近20亿体量业务</span></td></tr>
+<tr><td>学到核心能力</td><td><span style="color:#16a34a">是 — 选品、定价、流量、转化完整链路</span></td></tr>
+<tr><td>适合英语专业</td><td><span style="color:#16a34a">加分项 — JD明确要求"良好英文能力"</span></td></tr>
+<tr><td>适合女生长期发展</td><td><span style="color:#16a34a">是 — DTC运营成长路径清晰</span></td></tr>
+<tr><td>加班强度</td><td><span style="color:#ca8a04">中 [无公开数据，基于行业惯例判断]</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#ca8a04">中 — 编制多于GTM</span></td></tr>
+<tr><td>转正概率</td><td><span style="color:#16a34a">高 — JD明确写转正机会</span></td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• DTC独立站运营：接触近20亿体量生意盘子<br>• 完整业务链：选品→定价→流量→转化<br>• 数据分析：日报/周报/月报+优化建议<br>• 广告投放+EDM+KOL三类渠道全覆盖<br>• 竞品调研：JD明确要求</div>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• "协助"出现6次，前期执行工作较多<br>• 商品上架、页面更新等偏事务型</div>
+<p><strong>投递建议：</strong><span class="badge badge-green">强烈推荐</span> | 大厂跳板：极高 | 校招帮助：极高</p>
+</div>
+</div>
+
+<!-- 岗位3 -->
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>3. 欧洲品牌经理实习 @ 安克创新 <span class="badge badge-green">适配度 8/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table>
+<tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td><span style="color:#16a34a">高</span></td></tr>
+<tr><td>值得投递</td><td><span style="color:#16a34a">是 — 欧洲品牌经理，直接接触海外品牌建设</span></td></tr>
+<tr><td>学到核心能力</td><td><span style="color:#16a34a">是 — 品牌本地化、KOL管理、Campaign执行</span></td></tr>
+<tr><td>适合英语专业</td><td><span style="color:#16a34a">加分项 — JD明确"英语口语能作为工作语言优先"</span></td></tr>
+<tr><td>适合女生长期发展</td><td><span style="color:#2563eb">看情况 — 需积累数据分析能力</span></td></tr>
+<tr><td>加班强度</td><td><span style="color:#ca8a04">中 [无公开数据]</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#dc2626">高 — 编制少+英语口语+品牌sense</span></td></tr>
+<tr><td>转正概率</td><td><span style="color:#16a34a">高 — JD明确写转正机会</span></td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• 品牌本地化（30%权重）：AMZ/DTC listing与素材优化<br>• 市场洞察与年度规划（20%权重）<br>• KOL/KOC管理（10%权重）<br>• Campaign支持（10%权重）<br>• 英语硬要求："英语口语能作为工作语言优先"</div>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• 物料资产维护（30%权重）偏执行型<br>• 需连续实习4个月+，每周4天+</div>
+<p><strong>投递建议：</strong><span class="badge badge-green">强烈推荐</span> | 大厂跳板：高 | 校招帮助：高</p>
+</div>
+</div>
+
+<!-- 岗位4 -->
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>4. TikTok直播运营(北美) @ 安克创新 <span class="new-tag">NEW</span> <span class="badge badge-green">适配度 8/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table>
+<tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td><span style="color:#16a34a">高</span></td></tr>
+<tr><td>值得投递</td><td><span style="color:#16a34a">是 — TikTok直播是2026年最热赛道之一</span></td></tr>
+<tr><td>学到核心能力</td><td><span style="color:#16a34a">是 — GMV分析、转化漏斗、货品策略、TikTok平台对接</span></td></tr>
+<tr><td>适合英语专业</td><td><span style="color:#16a34a">加分项 — 北美市场，英语是工作语言</span></td></tr>
+<tr><td>适合女生长期发展</td><td><span style="color:#16a34a">是 — 1-2年可独立操盘</span></td></tr>
+<tr><td>加班强度</td><td><span style="color:#dc2626">高 — 直播运营需跟播，时间不规律</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#ca8a04">中 — 新兴方向，有经验者少</span></td></tr>
+<tr><td>转正概率</td><td><span style="color:#16a34a">高 — JD明确写转正机会</span></td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• GMV+转化漏斗：实时监测，每场输出复盘报告<br>• 货品策略：参与选品与组合策略<br>• TikTok官方对接：申报价格机制、平台活动资源<br>• 北美市场base西雅图</div>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• 直播运营加班强度高，需跟播<br>• base西雅图，需考虑赴美签证/住宿/成本<br>• TikTok直播变化快，技能迁移性需关注</div>
+<p><strong>投递建议：</strong><span class="badge badge-green">强烈推荐</span> | 大厂跳板：极高 | 校招帮助：极高</p>
+</div>
+</div>
+
+<!-- 岗位5 -->
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>5. 欧洲电商实习生 @ 安克创新 <span class="badge badge-blue">适配度 7/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table>
+<tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td><span style="color:#ca8a04">中高</span></td></tr>
+<tr><td>值得投递</td><td><span style="color:#16a34a">是 — 欧洲电商运营，但JD深度不如Charging岗</span></td></tr>
+<tr><td>学到核心能力</td><td><span style="color:#16a34a">是 — 独立站运营全流程</span></td></tr>
+<tr><td>适合英语专业</td><td><span style="color:#2563eb">加分项 — 欧洲市场</span></td></tr>
+<tr><td>适合女生长期发展</td><td><span style="color:#16a34a">是 — 电商运营成长路径清晰</span></td></tr>
+<tr><td>加班强度</td><td><span style="color:#ca8a04">中 [无公开数据]</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#ca8a04">中 — 编制多于GTM</span></td></tr>
+<tr><td>转正概率</td><td><span style="color:#16a34a">高</span></td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• 独立站全流程运营<br>• 核心运营指标优化<br>• 多渠道营销落地</div>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• JD简短，信息密度低于Charging岗<br>• 订单处理偏事务型<br>• 职责描述偏执行</div>
+<p><strong>投递建议：</strong><span class="badge badge-blue">推荐</span> | 大厂跳板：高 | 校招帮助：高</p>
+</div>
+</div>
+
+<!-- 岗位6-10 简化卡片 -->
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>6. 海外推广运营 @ 安克创新 <span class="badge badge-blue">7/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table><tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td>中高</td></tr>
+<tr><td>学到核心能力</td><td>是 — Amazon联盟营销、Deal平台运营</td></tr>
+<tr><td>适合英语专业</td><td>加分项</td></tr>
+<tr><td>加班强度</td><td><span style="color:#16a34a">低 — JD写"灵活的工作节奏"</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#16a34a">低</span></td></tr>
+<tr><td>转正概率</td><td>高</td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• Amazon联盟营销+站外推广：稀缺技能<br>• 灵活节奏，加班少</div>
+<p><strong>投递建议：</strong><span class="badge badge-blue">推荐</span> | 最容易拿offer的岗位</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>7. ANZ DTC 实习生 @ 安克创新 <span class="badge badge-blue">7/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table><tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td>中高</td></tr>
+<tr><td>学到核心能力</td><td>看情况 — JD信息极少</td></tr>
+<tr><td>适合英语专业</td><td>加分项 — 澳新市场英语硬要求</td></tr>
+<tr><td>加班强度</td><td>中 [无公开数据]</td></tr>
+<tr><td>面试难度</td><td><span style="color:#16a34a">低 — ANZ竞争小于欧美</span></td></tr>
+<tr><td>转正概率</td><td>高</td></tr>
+</table>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• JD极简，具体职责不明<br>• 基地长沙</div>
+<p><strong>投递建议：</strong><span class="badge badge-blue">推荐</span> | 投递前联系HR确认职责</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>8. ANZ GTM 实习生 @ 安克创新 <span class="badge badge-blue">7/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table><tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td>中高</td></tr>
+<tr><td>学到核心能力</td><td>看情况 — JD信息极少</td></tr>
+<tr><td>适合英语专业</td><td>加分项 — GTM+英语黄金组合</td></tr>
+<tr><td>加班强度</td><td>中 [无公开数据]</td></tr>
+<tr><td>面试难度</td><td>中</td></tr>
+<tr><td>转正概率</td><td>高</td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• 欧洲GTM的绝佳保底选择，命中率高</div>
+<p><strong>投递建议：</strong><span class="badge badge-blue">推荐</span> | 保底策略核心岗</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>9. 红人营销实习生 @ SHEIN <span class="badge badge-blue">7/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table><tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td>中高</td></tr>
+<tr><td>学到核心能力</td><td>是 — YouTube/Instagram/TikTok红人开发</td></tr>
+<tr><td>适合英语专业</td><td>加分项 — 英语六级及以上</td></tr>
+<tr><td>加班强度</td><td><span style="color:#dc2626">高 — JD原文"能接受加班"</span></td></tr>
+<tr><td>面试难度</td><td><span style="color:#16a34a">低</span></td></tr>
+<tr><td>转正概率</td><td>中 [无公开数据]</td></tr>
+</table>
+<div class="highlight highlight-green"><strong>核心亮点</strong><br>• SHEIN平台：全球最大DTC品牌之一<br>• 三大渠道全覆盖<br>• 自主开发红人资源</div>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• 6个月+周期长<br>• 加班明确<br>• 邮件回复占大量时间</div>
+<p><strong>投递建议：</strong><span class="badge badge-blue">推荐</span> | 需权衡加班+6个月周期</p>
+</div>
+</div>
+
+<div class="card">
+<div class="card-header" onclick="this.parentElement.classList.toggle('open')">
+<h3>10. 产品测试(消费者洞察) @ SHEIN <span class="badge badge-yellow">6/10</span></h3>
+<span class="arrow">▼</span>
+</div>
+<div class="card-body">
+<table><tr><th>维度</th><th>评估</th></tr>
+<tr><td>含金量</td><td>中</td></tr>
+<tr><td>学到核心能力</td><td>是 — 用户测试、数据处理、跨文化沟通</td></tr>
+<tr><td>适合英语专业</td><td>加分项 — "英语口语流利，可与外籍用户沟通"</td></tr>
+<tr><td>加班强度</td><td><span style="color:#16a34a">低</span></td></tr>
+<tr><td>面试难度</td><td>中 — 要求英语+Python+6个月全职</td></tr>
+<tr><td>转正概率</td><td>中 [无公开数据]</td></tr>
+</table>
+<div class="highlight highlight-red"><strong>风险提示</strong><br>• 6个月+全职，周期极长<br>• 偏美妆方向，与DTC/电商运营有偏差<br>• 非核心业务线</div>
+<p><strong>投递建议：</strong><span class="badge badge-yellow">保底</span> | 英语适配但方向偏研究</p>
+</div>
+</div>
+
+<!-- 综合判断 -->
+<div class="section">
+<h2>综合判断</h2>
+<table>
+<tr><th>类别</th><th>岗位</th><th>说明</th></tr>
+<tr><td>最容易拿offer</td><td>海外推广运营实习生 @ 安克创新</td><td>门槛低+长沙基地+编制多</td></tr>
+<tr><td>未来最赚钱</td><td>欧洲 GTM实习 @ 安克创新</td><td>GTM→品牌总监，薪资天花板最高</td></tr>
+<tr><td>成长最快</td><td>TikTok直播运营 @ 安克创新</td><td>1-2年可独立操盘，红利期</td></tr>
+<tr><td>最适合英语专业女生</td><td>独立站运营(Charging) @ 安克创新</td><td>英语硬要求+DTC+加班适中</td></tr>
+<tr><td>最接近全球化品牌运营</td><td>欧洲品牌经理实习 @ 安克创新</td><td>品牌本地化+KOL+Campaign</td></tr>
+<tr><td><span style="color:#dc2626">打杂岗预警</span></td><td>ANZ DTC / ANZ GTM @ 安克创新</td><td>JD极简，具体职责不明</td></tr>
+</table>
+</div>
+
+<!-- 推荐排名 -->
+<div class="section">
+<h2>推荐投递优先级排名</h2>
+<div class="rank-section rank-strong">
+<strong>强烈推荐</strong><br>
+1. 欧洲 GTM实习 @ 安克创新<br>
+2. 独立站运营(Charging) @ 安克创新<br>
+3. 欧洲品牌经理实习 @ 安克创新<br>
+4. TikTok直播运营(北美) @ 安克创新
+</div>
+<div class="rank-section rank-rec">
+<strong>推荐</strong><br>
+5. 欧洲电商实习生 @ 安克创新<br>
+6. 海外推广运营 @ 安克创新<br>
+7. ANZ DTC 实习生 @ 安克创新<br>
+8. ANZ GTM 实习生 @ 安克创新<br>
+9. 红人营销实习生 @ SHEIN
+</div>
+<div class="rank-section rank-safe">
+<strong>保底</strong><br>
+10. 产品测试(消费者洞察) @ SHEIN
+</div>
+</div>
+
+<!-- 面试建议 -->
+<div class="section">
+<h2>逐岗面试建议</h2>
+
+<div class="interview-card">
+<h4>1. 欧洲 GTM实习</h4>
+• 高频问题：为什么选GTM而不是纯运营？你怎么理解欧洲市场的差异化？举例说明你的跨文化沟通能力<br>
+• 英文面试概率高，准备"Walk me through a time you solved a problem cross-culturally"<br>
+• HR看重点：英语口语流利度 + 对GTM概念的理解 + 数据分析基础<br>
+• 包装经历：海外业务经历→跨文化沟通能力；竞品分析→市场洞察力<br>
+• 需补充：GTM基础概念（4P/Go-To-Market流程）、零售渠道知识
+</div>
+
+<div class="interview-card">
+<h4>2. 独立站运营(Charging)</h4>
+• 高频问题：你对DTC独立站有什么了解？Shopify和Amazon有什么区别？如何分析一个独立站的转化率？<br>
+• HR看重点：英语能力 + 数据敏感度 + 对电商运营的热情<br>
+• 包装经历：英文翻译→内容运营能力；竞品分析→数据分析思维<br>
+• 需补充：Shopify基础操作、独立站核心指标（UV/转化率/AOV/复购率）
+</div>
+
+<div class="interview-card">
+<h4>3. 欧洲品牌经理实习</h4>
+• 高频问题：你如何理解品牌本地化？举例你关注的一个海外品牌在中国/欧洲的本地化案例<br>
+• 英文面试概率高，准备"Describe a brand you admire and why"<br>
+• HR看重点：品牌sense + 英语口语 + KOL/社媒了解<br>
+• 包装经历：双语讲解→跨语言沟通；社团活动→Campaign策划<br>
+• 需补充：欧洲市场消费者特征、KOL合作流程
+</div>
+
+<div class="interview-card">
+<h4>4. TikTok直播运营(北美)</h4>
+• 高频问题：你看过哪些TikTok直播？如何判断一场直播的好坏？直播的转化漏斗是什么？<br>
+• HR看重点：对直播电商的理解 + 数据分析能力 + 英语<br>
+• 包装经历：任何活动策划→直播场控能力；数据报告→分析思维<br>
+• 需补充：TikTok Shop直播运营逻辑、GMV漏斗（曝光→点击→停留→下单）
+</div>
+
+<div class="interview-card">
+<h4>5. 欧洲电商实习生</h4>
+• 高频问题：你对独立站运营有什么了解？如何优化产品页面的转化率？<br>
+• HR看重点：英语 + 电商基础 + 学习能力<br>
+• 需补充：独立站运营基础、电商核心指标
+</div>
+
+<div class="interview-card">
+<h4>6. 海外推广运营</h4>
+• 高频问题：你了解哪些海外Deal平台？什么是Amazon联盟营销？<br>
+• HR看重点：对海外推广渠道的兴趣 + 英语 + 细心程度<br>
+• 需补充：Slickdeals/DealNews等Deal平台、Amazon Associates基础
+</div>
+
+<div class="interview-card">
+<h4>7. ANZ DTC 实习生</h4>
+• 高频问题：你对澳新市场有什么了解？为什么选ANZ而不是欧美？<br>
+• HR看重点：英语 + 对DTC的理解 + 可靠性<br>
+• 需补充：澳新电商市场特征（人口少但客单价高）
+</div>
+
+<div class="interview-card">
+<h4>8. ANZ GTM 实习生</h4>
+• 高频问题：同欧洲GTM岗，但面试竞争可能更低<br>
+• HR看重点：GTM概念理解 + 英语 + 对安克产品的了解<br>
+• 建议同时投递欧洲GTM，面试准备可复用
+</div>
+
+<div class="interview-card">
+<h4>9. 红人营销实习生 @ SHEIN</h4>
+• 高频问题：你关注哪些海外KOL？如何评估一个KOL的合作价值？你的英语邮件沟通经验？<br>
+• HR看重点：对YouTube/Instagram/TikTok的了解 + 英语沟通 + 抗压能力<br>
+• 包装经历：英文翻译→英语邮件沟通；社团外联→KOL沟通<br>
+• 需补充：KOL评估维度（粉丝数/互动率/调性匹配/报价）
+</div>
+
+<div class="interview-card">
+<h4>10. 产品测试(消费者洞察) @ SHEIN</h4>
+• 高频问题：你如何设计一个用户测试？描述你与外国人沟通的经历<br>
+• HR看重点：英语流利度 + 细心 + Python基础<br>
+• 需补充：用户测试方法论、Python基础（Pandas）
+</div>
+</div>
+
+<!-- 投递策略 -->
+<div class="section">
+<h2>安克创新多岗位投递策略</h2>
+<table>
+<tr><th>维度</th><th>分析</th></tr>
+<tr><td>命中率预判</td><td>海外推广运营>ANZ DTC/GTM>欧洲电商>Charging独立站>欧洲GTM>欧洲品牌经理>TikTok直播</td></tr>
+<tr><td>投递优先级</td><td>主攻：欧洲GTM+独立站运营+欧洲品牌经理；保底：ANZ GTM+海外推广运营</td></tr>
+<tr><td>核心原则</td><td><strong>进来比什么都重要</strong> — 安克有明确转正通道，先入职再转岗</td></tr>
+</table>
+</div>
+
+<div class="section" style="text-align:center;color:#94a3b8;font-size:12px;padding:12px">
+报告生成于 2026-05-27 | intern-job-advisor-daughter v3.0
+</div>
+
+</body>
+</html>
